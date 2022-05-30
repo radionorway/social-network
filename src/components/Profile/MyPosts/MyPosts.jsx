@@ -4,8 +4,8 @@ import { Field } from "redux-form";
 import {
   maxLengthCreator,
   required,
-} from "../../../utilities/validators/validators";
-import { Textarea } from "../../common/FormsControls/FormsControls";
+} from "../../../utilities/validators/validators.ts";
+import { Textarea } from "../../common/FormsControls/FormsControls.tsx";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 

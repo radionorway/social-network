@@ -5,7 +5,7 @@ import {
   createField,
   Input,
   Textarea,
-} from "./../../common/FormsControls/FormsControls";
+} from "../../common/FormsControls/FormsControls.tsx";
 import style from "../../common/FormsControls/FormsControls.module.css";
 const ProfileDataForm = ({ handleSubmit, profile, error }) => {
   return (

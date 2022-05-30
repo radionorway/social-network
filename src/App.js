@@ -2,17 +2,15 @@ import React, { Component, Suspense } from "react";
 import "./App.css";
 import Navbar from "./components/Navbar/Navbar";
 import { Navigate, Route, Routes } from "react-router-dom";
-
-import UsersContainer from "./components/Users/UsersContainer";
-
+import UsersContainer from "./components/Users/UsersContainer.tsx";
 import HeaderContainer from "./components/Header/HeaderContainer";
-import LoginPage from "./components/Login/Login";
+import LoginPage from "./components/Login/Login.tsx";
 import { connect, Provider } from "react-redux";
 import { withRouter } from "./hoc/withRouter";
 import { compose } from "redux";
-import { initializeApp } from "./redux/app-reducer";
+import { initializeApp } from "./redux/app-reducer.ts";
 import Preloader from "./components/common/Preloader/Preloader";
-import store from "./redux/redux-store";
+import store from "./redux/redux-store.ts";
 import { BrowserRouter } from "react-router-dom";
 
 const DialogsContainer = React.lazy(() =>
@@ -51,7 +49,10 @@ class App extends Component {
               <Route path="/" element={<Navigate to={"/profile"} />} />
               <Route path="/dialogs/*" element={<DialogsContainer />} />
               <Route path="/profile/:userId" element={<ProfileContainer />} />
-              <Route path="/users" element={<UsersContainer />} />
+              <Route
+                path="/users"
+                element={<UsersContainer pagetitle={"Name"} />}
+              />
               <Route path="/profile" element={<ProfileContainer />} />
               <Route path="/login" element={<LoginPage />} />
               <Route path="*" element={<div>404 NOT FOUND</div>} />
