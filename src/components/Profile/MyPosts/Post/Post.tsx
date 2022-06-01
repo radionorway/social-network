@@ -1,7 +1,11 @@
 import React from "react";
 import s from "./Post.module.css";
 
-const Post = (props) => {
+type PropsType = {
+  message: string;
+  likesCount: number;
+};
+const Post: React.FC<PropsType> = (props) => {
   return (
     <div className={s.item}>
       <img src="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg" />

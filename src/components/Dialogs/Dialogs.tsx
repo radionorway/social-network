@@ -1,11 +1,21 @@
 import React from "react";
 import { Navigate } from "react-router-dom";
-import AddMessageForm from "./AddMessageForm/AddMessageForm";
-import DialogsItem from "./DialogItem/DialogsItem";
+import { InitialStateType } from "../../redux/dialogs-reducer";
+import AddMessageForm from "./AddMessageForm/AddMessageForm.tsx";
+import DialogsItem from "./DialogItem/DialogsItem.tsx";
 import s from "./Dialogs.module.css";
-import Message from "./Message/Message";
+import Message from "./Message/Message.tsx";
 
-const Dialogs = (props) => {
+type PropsType = {
+  dialogsPage: InitialStateType;
+  sendMessage: (messageText: string) => void;
+};
+
+export type NewMessageFormValuesType = {
+  newMessageBody: string;
+};
+
+const Dialogs: React.FC<PropsType> = (props) => {
   let state = props.dialogsPage;
 
   let dialogsElements = state.dialogs.map((d) => (
@@ -16,11 +26,10 @@ const Dialogs = (props) => {
   ));
   //let newMessageBody = state.newMessageBody;
 
-  let addNewMessage = (values) => {
+  let addNewMessage = (values: NewMessageFormValuesType) => {
     props.sendMessage(values.newMessageBody);
   };
 
-  if (!props.isAuth) return <Navigate to={"/login"} />;
   return (
     <div className={s.dialogs}>
       <div className={s.dialogsItems}>{dialogsElements}</div>

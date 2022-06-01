@@ -12,7 +12,6 @@ let initialState = {
   ] as Array<PostType>,
   profile: null as ProfileType | null,
   status: "",
-  newPostText: "",
 };
 
 const profileReducer = (
@@ -29,7 +28,6 @@ const profileReducer = (
       return {
         ...state,
         posts: [...state.posts, newPost],
-        newPostText: "",
       };
     }
 

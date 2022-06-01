@@ -61,3 +61,5 @@ export function createField<FormKeysType extends string>(
     </div>
   );
 }
+
+export type GetStringCase<T> = Extract<keyof T, string>;

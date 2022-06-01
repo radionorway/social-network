@@ -7,6 +7,7 @@ import { login } from "../../redux/auth-reducer.ts";
 import { Navigate } from "react-router-dom";
 import { AppStateType } from "../../redux/redux-store";
 import style from "./../common/FormsControls/FormsControls.module.css";
+import { GetStringCase } from "../common/FormsControls/FormsControls";
 
 type LoginFormOwnProps = {
   captchaUrl: string | null;
@@ -82,7 +83,7 @@ export type LoginFormValuesType = {
   email: string;
 };
 
-type LoginFormValuesTypeKeys = Extract<keyof LoginFormValuesType, string>;
+type LoginFormValuesTypeKeys = GetStringCase<LoginFormValuesType>;
 
 const Login: React.FC<MapStatePropsType & MapDispatchPropsType> = (props) => {
   const onSubmit = (formData: LoginFormValuesType) => {
