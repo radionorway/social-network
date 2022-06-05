@@ -1,31 +1,57 @@
+import { Avatar, Button, Col, Layout, Menu, Row } from "antd";
 import React from "react";
+import { Link } from "react-router-dom";
 import { NavLink } from "react-router-dom";
 import s from "./Header.module.css";
+import { UserOutlined } from "@ant-design/icons";
+import { useDispatch, useSelector } from "react-redux";
+import { selectIsAuth } from "../../redux/auth-selectors.ts";
+import { selectCurrentUserLogin } from "../../redux/auth-selectors.ts";
+import { logout } from "../../redux/auth-reducer.ts";
+export type MapPropsType = {};
 
-export type MapPropsType = {
-  isAuth: boolean;
-  login: string | null;
-};
+export const Header: React.FC<MapPropsType> = (props) => {
+  const isAuth = useSelector(selectIsAuth);
+  const login = useSelector(selectCurrentUserLogin);
+  const dispatch = useDispatch();
+  const logoutCallback = () => {
+    dispatch(logout());
+  };
 
-export type DispatchPropsType = {
-  logout: () => void;
-};
-const Header: React.FC<MapPropsType & DispatchPropsType> = (props) => {
+  const { Header } = Layout;
   return (
-    <header className={s.header}>
-      <img src="https://seeklogo.com/images/C/company-name-logo-C74A7D6F5A-seeklogo.com.png" />
+    <Header className="header">
+      <Row>
+        <Col span={18}>
+          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={["2"]}>
+            <Menu.Item key="1">
+              <Link to="/developers">Developers</Link>
+            </Menu.Item>
+          </Menu>
+        </Col>
 
-      <div className={s.loginBlock}>
-        {props.isAuth ? (
-          <div>
-            {props.login} - <button onClick={props.logout}>Log out</button>
-          </div>
+        {isAuth ? (
+          <>
+            {" "}
+            <Col span={1}>
+              <Avatar
+                alt={login || ""}
+                style={{ backgroundColor: "#87d068" }}
+                icon={<UserOutlined />}
+              />
+            </Col>
+            <Col span={5}>
+              <Button onClick={logoutCallback}>Log out</Button>
+            </Col>
+          </>
         ) : (
-          <NavLink to={"/login"}>Login</NavLink>
+          <Col span={6}>
+            <Button>
+              <Link to={"/login"}>Login</Link>
+            </Button>
+          </Col>
         )}
-      </div>
-    </header>
+      </Row>
+    </Header>
   );
 };
-
-export default Header;
