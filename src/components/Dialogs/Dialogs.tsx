@@ -1,5 +1,4 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
 import { InitialStateType } from "../../redux/dialogs-reducer";
 import AddMessageForm from "./AddMessageForm/AddMessageForm.tsx";
 import DialogsItem from "./DialogItem/DialogsItem.tsx";

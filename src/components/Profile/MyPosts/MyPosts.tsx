@@ -1,12 +1,5 @@
 import React from "react";
-import { reduxForm } from "redux-form";
-import { Field } from "redux-form";
 import { PostType } from "../../../types/types";
-import {
-  maxLengthCreator,
-  required,
-} from "../../../utilities/validators/validators.ts";
-import { Textarea } from "../../common/FormsControls/FormsControls.tsx";
 import AddPostForm, {
   AddPostFormValuesType,
 } from "./AddPostForm/AddPostForm.tsx";

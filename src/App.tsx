@@ -1,11 +1,7 @@
 import React, { Component, Suspense } from "react";
 import "./App.css";
 import "antd/dist/antd.css";
-import Navbar from "./components/Navbar/Navbar.tsx";
 import { Navigate, Route, Routes } from "react-router-dom";
-
-import HeaderContainer from "./components/Header/HeaderContainer.tsx";
-import { Login } from "./components/Login/LoginPage.tsx";
 import { connect, Provider } from "react-redux";
 import { withRouter } from "./hoc/withRouter";
 import { compose } from "redux";
@@ -16,8 +12,7 @@ import { BrowserRouter } from "react-router-dom";
 import { AppStateType } from "./redux/redux-store";
 import { UsersPage } from "./components/Users/UsersContainer.tsx";
 import { LoginPage } from "./components/Login/LoginPage.tsx";
-
-import { Layout, Menu, Breadcrumb, Avatar, Row, Col } from "antd";
+import { Layout, Menu, Breadcrumb } from "antd";
 import {
   UserOutlined,
   LaptopOutlined,
@@ -143,24 +138,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
         </Content>
         <Footer style={{ textAlign: "center" }}>Social Network</Footer>
       </Layout>
-
-      // <div className="app-wrapper">
-      //   <HeaderContainer />
-      //   <Navbar />
-      //   <div className="app-wrapper-content">
-      //     <Suspense fallback={<Preloader />}>
-      //       <Routes>
-      //         <Route path="/" element={<Navigate to={"/profile"} />} />
-      //         <Route path="/dialogs/*" element={<DialogsContainer />} />
-      //         <Route path="/profile/:userId" element={<ProfileContainer />} />
-      //         <Route path="/users" element={<UsersPage pagetitle={"Name"} />} />
-      //         <Route path="/profile" element={<ProfileContainer />} />
-      //         <Route path="/login" element={<LoginPage />} />
-      //         <Route path="*" element={<div>404 NOT FOUND</div>} />
-      //       </Routes>
-      //     </Suspense>
-      //   </div>
-      // </div>
     );
   }
 }

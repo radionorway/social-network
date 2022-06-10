@@ -1,6 +1,5 @@
 import React from "react";
 import { InjectedFormProps, reduxForm } from "redux-form";
-import { Field } from "redux-form";
 import {
   maxLengthCreator,
   required,

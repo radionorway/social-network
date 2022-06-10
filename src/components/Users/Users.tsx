@@ -12,7 +12,6 @@ import {
   getPageSize,
   getTotalUsersCount,
 } from "../../redux/users-selectors.ts";
-import { UserType } from "../../types/types";
 import Paginator from "../common/Paginator/Paginator.tsx";
 import User from "./User.tsx";
 import { UsersSearchForm } from "./UsersSearchForm.tsx";

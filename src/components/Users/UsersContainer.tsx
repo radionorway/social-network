@@ -1,22 +1,7 @@
 import React from "react";
-import { connect, useSelector } from "react-redux";
-import { follow, unfollow, requestUsers } from "../../redux/users-reducer.ts";
-
+import { useSelector } from "react-redux";
 import Preloader from "../common/Preloader/Preloader.tsx";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect";
-import { compose } from "redux";
-import {
-  getCurrentPage,
-  getFollowingInProgress,
-  getIsFetching,
-  getPageSize,
-  getTotalUsersCount,
-  getUsers,
-} from "../../redux/users-selectors.ts";
-import { UserType } from "../../types/types";
-import { AppStateType } from "../../redux/redux-store";
-import { FilterType } from "../../redux/users-reducer";
-import { getUsersFilter } from "../../redux/users-selectors.ts";
+import { getIsFetching } from "../../redux/users-selectors.ts";
 import { Users } from "./Users.tsx";
 
 type UsersPagePropsType = {

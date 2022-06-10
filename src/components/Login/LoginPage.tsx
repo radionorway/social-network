@@ -2,7 +2,7 @@ import React from "react";
 import { InjectedFormProps, reduxForm } from "redux-form";
 import { createField, Input } from "../common/FormsControls/FormsControls.tsx";
 import { required } from "../../utilities/validators/validators.ts";
-import { connect, useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../redux/auth-reducer.ts";
 import { Navigate } from "react-router-dom";
 import { AppStateType } from "../../redux/redux-store";

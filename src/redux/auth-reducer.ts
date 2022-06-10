@@ -1,4 +1,3 @@
-import { Action } from "redux";
 import { stopSubmit } from "redux-form";
 import { ResultCodeForCaptchaEnum } from "../api/api.ts";
 import { ResultCodesEnum } from "../api/api.ts";

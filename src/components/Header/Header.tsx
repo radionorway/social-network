@@ -1,8 +1,6 @@
 import { Avatar, Button, Col, Layout, Menu, Row } from "antd";
 import React from "react";
 import { Link } from "react-router-dom";
-import { NavLink } from "react-router-dom";
-import s from "./Header.module.css";
 import { UserOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsAuth } from "../../redux/auth-selectors.ts";

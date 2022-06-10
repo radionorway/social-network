@@ -1,10 +1,6 @@
 import { chatAPI, ChatMessageAPIType } from "./../api/chat-api.ts";
-import { Action, Dispatch } from "redux";
+import { Dispatch } from "redux";
 import { stopSubmit } from "redux-form";
-import { ResultCodeForCaptchaEnum } from "../api/api.ts";
-import { ResultCodesEnum } from "../api/api.ts";
-import { authAPI } from "../api/auth-api.ts";
-import { securityAPI } from "../api/security-api.ts";
 import { BaseThunkType, InferActionsTypes } from "./redux-store.ts";
 import { StatusType } from "../api/chat-api.ts";
 import { v1 } from "uuid";
