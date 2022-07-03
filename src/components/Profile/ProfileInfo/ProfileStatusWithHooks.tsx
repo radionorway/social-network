@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useEffect, useState } from 'react';
 
 type PropsType = {
   status: string;
@@ -30,9 +30,7 @@ const ProfileStatusWithHooks: React.FC<PropsType> = (props) => {
       {!editMode && (
         <div>
           <b>Status: </b>
-          <span onDoubleClick={activateEditMode}>
-            {props.status || "-----"}
-          </span>
+          <span onDoubleClick={activateEditMode}>{props.status || '-----'}</span>
         </div>
       )}
       {editMode && (

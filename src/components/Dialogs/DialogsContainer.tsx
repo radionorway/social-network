@@ -1,10 +1,10 @@
-import { connect } from "react-redux";
-import { compose } from "redux";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect.tsx";
-import { actions } from "../../redux/dialogs-reducer.ts";
-import Dialogs from "./Dialogs.tsx";
-import { AppStateType } from "../../redux/redux-store";
-import React from "react";
+import { connect } from 'react-redux';
+import { compose } from 'redux';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { actions } from '../../redux/dialogs-reducer';
+import Dialogs from './Dialogs';
+import { AppStateType } from '../../redux/redux-store';
+import React from 'react';
 
 let mapStateToProps = (state: AppStateType) => {
   return {
@@ -14,5 +14,5 @@ let mapStateToProps = (state: AppStateType) => {
 
 export default compose<React.ComponentType>(
   connect(mapStateToProps, { ...actions }),
-  withAuthRedirect
+  withAuthRedirect,
 )(Dialogs);

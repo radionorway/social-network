@@ -1,12 +1,12 @@
-import { stopSubmit } from "redux-form";
-import { ResultCodeForCaptchaEnum } from "../api/api.ts";
-import { ResultCodesEnum } from "../api/api.ts";
-import { authAPI } from "../api/auth-api.ts";
-import { securityAPI } from "../api/security-api.ts";
-import { BaseThunkType, InferActionsTypes } from "./redux-store";
+import { stopSubmit } from 'redux-form';
+import { ResultCodeForCaptchaEnum } from '../api/api';
+import { ResultCodesEnum } from '../api/api';
+import { authAPI } from '../api/auth-api';
+import { securityAPI } from '../api/security-api';
+import { BaseThunkType, InferActionsTypes } from './redux-store';
 
-const SET_USER_DATA = "SN/auth/SET_USER_DATA";
-const GET_CAPTCHA_URL_SUCCESS = "SN/auth/GET_CAPTCHA_URL_SUCCESS";
+const SET_USER_DATA = 'SN/auth/SET_USER_DATA';
+const GET_CAPTCHA_URL_SUCCESS = 'SN/auth/GET_CAPTCHA_URL_SUCCESS';
 
 let initialState = {
   userId: null as number | null,
@@ -16,13 +16,10 @@ let initialState = {
   captchaUrl: null as string | null,
 };
 
-const authReducer = (
-  state = initialState,
-  action: ActionsType
-): InitialStateType => {
+const authReducer = (state = initialState, action: ActionsType): InitialStateType => {
   switch (action.type) {
-    case "SN/auth/SET_USER_DATA":
-    case "SN/auth/GET_CAPTCHA_URL_SUCCESS":
+    case 'SN/auth/SET_USER_DATA':
+    case 'SN/auth/GET_CAPTCHA_URL_SUCCESS':
       return {
         ...state,
         ...action.payload,
@@ -38,10 +35,10 @@ export const actions = {
     userId: number | null,
     email: string | null,
     login: string | null,
-    isAuth: boolean
+    isAuth: boolean,
   ) =>
     ({
-      type: "SN/auth/SET_USER_DATA",
+      type: 'SN/auth/SET_USER_DATA',
       payload: {
         userId,
         email,
@@ -51,7 +48,7 @@ export const actions = {
     } as const),
   getCaptchaUrlSuccess: (captchaUrl: string) =>
     ({
-      type: "SN/auth/GET_CAPTCHA_URL_SUCCESS",
+      type: 'SN/auth/GET_CAPTCHA_URL_SUCCESS',
       payload: { captchaUrl },
     } as const),
 };
@@ -66,12 +63,7 @@ export const getAuthUserData = (): ThunkType => async (dispatch) => {
 };
 
 export const login =
-  (
-    email: string,
-    password: string,
-    rememberMe: boolean,
-    captcha: string
-  ): ThunkType =>
+  (email: string, password: string, rememberMe: boolean, captcha: string): ThunkType =>
   async (dispatch) => {
     let data = await authAPI.login(email, password, rememberMe, captcha);
     if (data.resultCode === 0) {
@@ -80,8 +72,8 @@ export const login =
       if (data.resultCode === ResultCodeForCaptchaEnum.CaptchaIsRequired) {
         dispatch(getCaptchaUrl());
       }
-      let message = data.messages.length > 0 ? data.messages[0] : "Some error";
-      dispatch(stopSubmit("login", { _error: message }));
+      let message = data.messages.length > 0 ? data.messages[0] : 'Some error';
+      dispatch(stopSubmit('login', { _error: message }));
     }
   };
 

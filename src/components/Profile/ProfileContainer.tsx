@@ -1,19 +1,19 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import Profile from "./Profile.tsx";
+import React from 'react';
+import { connect } from 'react-redux';
+import Profile from './Profile';
 import {
   getStatus,
   getUserProfile,
   updateStatus,
   savePhoto,
   saveProfile,
-} from "../../redux/profile-reducer.ts";
-import { withAuthRedirect } from "../../hoc/withAuthRedirect.tsx";
-import { compose } from "redux";
-import { withRouter } from "../../hoc/withRouter";
-import { AppStateType } from "../../redux/redux-store";
-import { ProfileType } from "../../types/types";
-
+} from '../../redux/profile-reducer';
+import { withAuthRedirect } from '../../hoc/withAuthRedirect';
+import { compose } from 'redux';
+import { withRouter } from '../../hoc/withRouter';
+import { AppStateType } from '../../redux/redux-store';
+import { ProfileType } from '../../types/types';
+import { History } from 'history';
 type MapPropsType = ReturnType<typeof mapStateToProps>;
 type DispatchPropsType = {
   getUserProfile: (userId: number) => void;
@@ -23,21 +23,27 @@ type DispatchPropsType = {
   saveProfile: (profile: ProfileType) => Promise<any>;
 };
 
-type PropsType = MapPropsType & DispatchPropsType;
+type PathParamsType = {
+  router: any;
+  history: History;
+};
+
+type PropsType = MapPropsType & DispatchPropsType & PathParamsType;
 
 class ProfileContainer extends React.Component<PropsType> {
+  constructor(props: PropsType) {
+    super(props);
+  }
   refreshProfile() {
     let userId: number | null = +this.props.router.params.userId;
     if (!userId) {
       userId = this.props.authorizedUserId;
       if (!userId) {
-        this.props.history.push("/login");
+        this.props.history.push('/login');
       }
     }
     if (!userId) {
-      console.error(
-        "ID should exist in URI params or in state('authorizedUserId')"
-      );
+      console.error("ID should exist in URI params or in state('authorizedUserId')");
     } else {
       this.props.getUserProfile(userId);
       this.props.getStatus(userId);
@@ -49,9 +55,10 @@ class ProfileContainer extends React.Component<PropsType> {
   }
 
   componentDidUpdate(prevProps: PropsType, prevState: PropsType) {
-    if (this.props.router.params.userId != prevProps.router.params.userId)
-      this.refreshProfile();
+    if (this.props.router.params.userId != prevProps.router.params.userId) this.refreshProfile();
   }
+
+  componentWillUnmount(): void {}
 
   render() {
     return (
@@ -67,14 +74,15 @@ class ProfileContainer extends React.Component<PropsType> {
   }
 }
 
-let mapStateToProps = (state: AppStateType) => ({
-  profile: state.profilePage.profile,
-  status: state.profilePage.status,
-  authorizedUserId: state.auth.userId,
-  isAuth: state.auth.isAuth,
-});
-
-export default compose<React.Component>(
+let mapStateToProps = (state: AppStateType) => {
+  return {
+    profile: state.profilePage.profile,
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth,
+  };
+};
+export default compose<React.ComponentType>(
   connect(mapStateToProps, {
     getUserProfile,
     getStatus,
@@ -83,5 +91,5 @@ export default compose<React.Component>(
     saveProfile,
   }),
   withRouter,
-  withAuthRedirect
+  withAuthRedirect,
 )(ProfileContainer);

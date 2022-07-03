@@ -1,22 +1,25 @@
-import React from "react";
-import s from "./ProfileInfo.module.css";
-import { InjectedFormProps, reduxForm } from "redux-form";
+import React from 'react';
+import s from './ProfileInfo.module.css';
+import { InjectedFormProps, reduxForm } from 'redux-form';
 import {
   createField,
   Input,
   Textarea,
   GetStringKeys,
-} from "../../common/FormsControls/FormsControls.tsx";
-import style from "../../common/FormsControls/FormsControls.module.css";
-import { ProfileType } from "../../../types/types";
+} from '../../common/FormsControls/FormsControls';
+import style from '../../common/FormsControls/FormsControls.module.css';
+import { ProfileType } from '../../../types/types';
 
 type PropsType = {
   profile: ProfileType;
 };
 type ProfileTypeKeys = GetStringKeys<ProfileType>;
-const ProfileDataForm: React.FC<
-  InjectedFormProps<ProfileType, PropsType> & PropsType
-> = ({ handleSubmit, profile, error }) => {
+
+const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & PropsType> = ({
+  handleSubmit,
+  profile,
+  error,
+}) => {
   return (
     <form onSubmit={handleSubmit}>
       <div>
@@ -24,37 +27,35 @@ const ProfileDataForm: React.FC<
       </div>
       {error && <div className={style.formSummaryError}>{error}</div>}
       <div>
-        <b>Full name </b>:{" "}
-        {createField<ProfileTypeKeys>("Full name", "fullName", [], Input)}
+        <b>Full name </b>: {createField<ProfileTypeKeys>('Full name', 'fullName', [], Input)}
       </div>
       <div>
         <b>Looking for a job </b>:
-        {createField<ProfileTypeKeys>("", "lookingForAJob", [], Input, {
-          type: "checkbox",
+        {createField<ProfileTypeKeys>('', 'lookingForAJob', [], Input, {
+          type: 'checkbox',
         })}
       </div>
 
       <div>
         <b>My professional skills </b>:
         {createField<ProfileTypeKeys>(
-          "My professional skills",
-          "lookingForAJobDescription",
+          'My professional skills',
+          'lookingForAJobDescription',
           [],
-          Textarea
+          Textarea,
         )}
       </div>
 
       <div>
-        <b>About me</b>:
-        {createField<ProfileTypeKeys>("About me", "aboutMe", [], Textarea)}
+        <b>About me</b>:{createField<ProfileTypeKeys>('About me', 'aboutMe', [], Textarea)}
       </div>
       <div>
-        <b>Contacts</b>:{" "}
+        <b>Contacts</b>:{' '}
         {Object.keys(profile.contacts).map((key) => {
           return (
             <div key={key} className={s.contact}>
               <b>
-                {key}: {createField(key, "contacts." + key, [], Input)}
+                {key}: {createField(key, 'contacts.' + key, [], Input)}
               </b>
             </div>
           );
@@ -65,6 +66,6 @@ const ProfileDataForm: React.FC<
 };
 
 const ProfileDataFormReduxFrom = reduxForm<ProfileType, PropsType>({
-  form: "edit-profile",
+  form: 'edit-profile',
 })(ProfileDataForm);
 export default ProfileDataFormReduxFrom;

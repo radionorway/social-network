@@ -1,8 +1,8 @@
-import React from "react";
-import styles from "./users.module.css";
-import userPhoto from "../../assets/images/user.png";
-import { NavLink } from "react-router-dom";
-import { UserType } from "../../types/types";
+import React from 'react';
+import styles from './users.module.css';
+import userPhoto from '../../assets/images/user.png';
+import { NavLink } from 'react-router-dom';
+import { UserType } from '../../types/types';
 
 type PropsType = {
   user: UserType;
@@ -11,17 +11,12 @@ type PropsType = {
   follow: (userId: number) => void;
 };
 
-const User: React.FC<PropsType> = ({
-  user,
-  followingInProgress,
-  unfollow,
-  follow,
-}) => {
+const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
   return (
     <div>
       <span>
         <div>
-          <NavLink to={"./../profile/" + user.id}>
+          <NavLink to={'./../profile/' + user.id}>
             <img
               src={user.photos.small != null ? user.photos.small : userPhoto}
               className={styles.userPhoto}
@@ -34,8 +29,7 @@ const User: React.FC<PropsType> = ({
               disabled={followingInProgress.some((id) => id === user.id)}
               onClick={() => {
                 unfollow(user.id);
-              }}
-            >
+              }}>
               Unfollow
             </button>
           ) : (
@@ -43,8 +37,7 @@ const User: React.FC<PropsType> = ({
               disabled={followingInProgress.some((id) => id === user.id)}
               onClick={() => {
                 follow(user.id);
-              }}
-            >
+              }}>
               Follow
             </button>
           )}
@@ -54,10 +47,6 @@ const User: React.FC<PropsType> = ({
         <span>
           <div>{user.name}</div>
           <div>{user.status}</div>
-        </span>
-        <span>
-          {/* <div>{"u.location.country"}</div>
-          <div>{"u.location.city"}</div> */}
         </span>
       </span>
     </div>

@@ -1,20 +1,12 @@
-import React, { FC, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { FilterType, requestUsers } from "../../redux/users-reducer.ts";
-import {
-  getFollowingInProgress,
-  getUsers,
-  getUsersFilter,
-} from "../../redux/users-selectors.ts";
-import {
-  getCurrentPage,
-  getPageSize,
-  getTotalUsersCount,
-} from "../../redux/users-selectors.ts";
-import Paginator from "../common/Paginator/Paginator.tsx";
-import User from "./User.tsx";
-import { UsersSearchForm } from "./UsersSearchForm.tsx";
+import React, { FC, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { FilterType, requestUsers } from '../../redux/users-reducer';
+import { getFollowingInProgress, getUsers, getUsersFilter } from '../../redux/users-selectors';
+import { getCurrentPage, getPageSize, getTotalUsersCount } from '../../redux/users-selectors';
+import Paginator from '../common/Paginator/Paginator';
+import User from './User';
+import { UsersSearchForm } from './UsersSearchForm';
 
 type PropsType = {};
 
@@ -31,9 +23,7 @@ export const Users: FC<PropsType> = (props) => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    navigate(
-      `/developers/?term=${filter.term}&friends=${filter.friend}&page=${currentPage}`
-    );
+    navigate(`/developers/?term=${filter.term}&friends=${filter.friend}&page=${currentPage}`);
   }, [filter, currentPage]);
 
   useEffect(() => {

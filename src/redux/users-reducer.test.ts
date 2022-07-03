@@ -1,35 +1,36 @@
-import usersReducer, { actions, InitialState } from "./users-reducer";
+import usersReducer, { actions, InitialState } from './users-reducer';
 let state: InitialState;
 beforeEach(() => {
+  //@ts-ignore
   state = {
     users: [
       {
         id: 0,
-        name: "Dimych 0",
+        name: 'Dimych 0',
         followed: false,
         photos: { small: null, large: null },
-        status: "status 0",
+        status: 'status 0',
       },
       {
         id: 1,
-        name: "Dimych 1",
+        name: 'Dimych 1',
         followed: false,
         photos: { small: null, large: null },
-        status: "status 1",
+        status: 'status 1',
       },
       {
         id: 2,
-        name: "Dimych 2",
+        name: 'Dimych 2',
         followed: true,
         photos: { small: null, large: null },
-        status: "status 2",
+        status: 'status 2',
       },
       {
         id: 3,
-        name: "Dimych 3",
+        name: 'Dimych 3',
         followed: false,
         photos: { small: null, large: null },
-        status: "status 3",
+        status: 'status 3',
       },
     ],
     pageSize: 10,
@@ -40,14 +41,14 @@ beforeEach(() => {
   };
 });
 
-test("follow success", () => {
+test('follow success', () => {
   const newState = usersReducer(state, actions.followSuccess(1));
 
   expect(newState.users[0].followed).toBeFalsy();
   expect(newState.users[1].followed).toBeTruthy();
 });
 
-test("unfollow success", () => {
+test('unfollow success', () => {
   const newState = usersReducer(state, actions.unfollowSuccess(3));
 
   expect(newState.users[2].followed).toBeTruthy();

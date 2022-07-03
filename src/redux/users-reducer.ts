@@ -1,10 +1,9 @@
-import { AppStateType, BaseThunkType, InferActionsTypes } from "./redux-store";
-import { updateObjectInArray } from "../utilities/object-helpers.ts";
-import { PhotosType, UserType } from "../types/types";
-import { Dispatch } from "redux";
-import { ThunkAction } from "redux-thunk";
-import { usersAPI } from "../api/users-api.ts";
-import { APIResponseType } from "../api/api";
+import { BaseThunkType, InferActionsTypes } from './redux-store';
+import { updateObjectInArray } from '../utilities/object-helpers';
+import { UserType } from '../types/types';
+import { Dispatch } from 'redux';
+import { usersAPI } from '../api/users-api';
+import { APIResponseType } from '../api/api';
 
 let initialState = {
   users: [] as Array<UserType>,
@@ -14,46 +13,43 @@ let initialState = {
   isFetching: false,
   followingInProgress: [] as Array<number>,
   filter: {
-    term: "",
+    term: '',
     friend: null as null | boolean,
   },
 };
 
-const usersReducer = (
-  state = initialState,
-  action: ActionsTypes
-): InitialState => {
+const usersReducer = (state = initialState, action: ActionsTypes): InitialState => {
   switch (action.type) {
-    case "SN/USERS/FOLLOW":
+    case 'SN/USERS/FOLLOW':
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.userId, "id", {
+        users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: true,
         }),
       };
-    case "SN/USERS/UNFOLLOW":
+    case 'SN/USERS/UNFOLLOW':
       return {
         ...state,
-        users: updateObjectInArray(state.users, action.userId, "id", {
+        users: updateObjectInArray(state.users, action.userId, 'id', {
           followed: false,
         }),
       };
-    case "SN/USERS/SET_USERS": {
+    case 'SN/USERS/SET_USERS': {
       return { ...state, users: action.users };
     }
-    case "SN/USERS/SET_CURRENT_PAGE": {
+    case 'SN/USERS/SET_CURRENT_PAGE': {
       return { ...state, currentPage: action.currentPage };
     }
-    case "SN/USERS/SET_TOTAL_USERS_COUNT": {
+    case 'SN/USERS/SET_TOTAL_USERS_COUNT': {
       return { ...state, totalUsersCount: action.count };
     }
-    case "SN/USERS/TOGGLE_IS_FETCHING": {
+    case 'SN/USERS/TOGGLE_IS_FETCHING': {
       return { ...state, isFetching: action.isFetching };
     }
-    case "SN/USERS/SET_FILTER": {
+    case 'SN/USERS/SET_FILTER': {
       return { ...state, filter: action.payload };
     }
-    case "SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS": {
+    case 'SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS': {
       return {
         ...state,
         followingInProgress: action.isFetching
@@ -69,68 +65,59 @@ const usersReducer = (
 export const actions = {
   followSuccess: (userId: number) =>
     ({
-      type: "SN/USERS/FOLLOW",
+      type: 'SN/USERS/FOLLOW',
       userId,
     } as const),
 
   unfollowSuccess: (userId: number) =>
     ({
-      type: "SN/USERS/UNFOLLOW",
+      type: 'SN/USERS/UNFOLLOW',
       userId,
     } as const),
 
   setUsers: (users: Array<UserType>) =>
     ({
-      type: "SN/USERS/SET_USERS",
+      type: 'SN/USERS/SET_USERS',
       users,
     } as const),
 
   setCurrentPage: (currentPage: number) =>
     ({
-      type: "SN/USERS/SET_CURRENT_PAGE",
+      type: 'SN/USERS/SET_CURRENT_PAGE',
       currentPage,
     } as const),
   setFilter: (filter: FilterType) =>
     ({
-      type: "SN/USERS/SET_FILTER",
+      type: 'SN/USERS/SET_FILTER',
       payload: filter,
     } as const),
 
   setTotalUsersCount: (totalUsersCount: number) =>
     ({
-      type: "SN/USERS/SET_TOTAL_USERS_COUNT",
+      type: 'SN/USERS/SET_TOTAL_USERS_COUNT',
       count: totalUsersCount,
     } as const),
 
   toggleIsFetching: (isFetching: boolean) =>
     ({
-      type: "SN/USERS/TOGGLE_IS_FETCHING",
+      type: 'SN/USERS/TOGGLE_IS_FETCHING',
       isFetching,
     } as const),
 
   toggleFollowingProgress: (isFetching: boolean, userId: number) =>
     ({
-      type: "SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS",
+      type: 'SN/USERS/TOGGLE_IS_FOLLOWING_PROGRESS',
       isFetching,
       userId,
     } as const),
 };
 
-export const requestUsers = (
-  page: number,
-  pageSize: number,
-  filter: FilterType
-): ThunkType => {
+export const requestUsers = (page: number, pageSize: number, filter: FilterType): ThunkType => {
   return async (dispatch, getState) => {
     dispatch(actions.toggleIsFetching(true));
     dispatch(actions.setCurrentPage(page));
     dispatch(actions.setFilter(filter));
-    let data = await usersAPI.getUsers(
-      page,
-      pageSize,
-      filter.term,
-      filter.friend
-    );
+    let data = await usersAPI.getUsers(page, pageSize, filter.term, filter.friend);
     dispatch(actions.toggleIsFetching(false));
     dispatch(actions.setUsers(data.items));
     dispatch(actions.setTotalUsersCount(data.totalCount));
@@ -141,7 +128,7 @@ const _followUnfollowFlow = async (
   dispatch: Dispatch<ActionsTypes>,
   userId: number,
   apiMethod: (userId: number) => Promise<APIResponseType>,
-  actionCreator: (userId: number) => ActionsTypes
+  actionCreator: (userId: number) => ActionsTypes,
 ) => {
   dispatch(actions.toggleFollowingProgress(true, userId));
   let response = await apiMethod(userId);
@@ -157,7 +144,7 @@ export const follow = (userId: number): ThunkType => {
       dispatch,
       userId,
       usersAPI.follow.bind(usersAPI),
-      actions.followSuccess
+      actions.followSuccess,
     );
   };
 };
@@ -167,7 +154,7 @@ export const unfollow = (userId: number): ThunkType => {
       dispatch,
       userId,
       usersAPI.unfollow.bind(usersAPI),
-      actions.unfollowSuccess
+      actions.unfollowSuccess,
     );
   };
 };

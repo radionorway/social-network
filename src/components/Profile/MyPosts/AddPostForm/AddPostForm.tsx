@@ -1,11 +1,8 @@
-import React from "react";
-import { InjectedFormProps, reduxForm } from "redux-form";
-import { required } from "../../../../utilities/validators/validators.ts";
-import { Input } from "../../../common/FormsControls/FormsControls.tsx";
-import {
-  createField,
-  GetStringCase,
-} from "../../../common/FormsControls/FormsControls.tsx";
+import React from 'react';
+import { InjectedFormProps, reduxForm } from 'redux-form';
+import { required } from '../../../../utilities/validators/validators';
+import { Input } from '../../../common/FormsControls/FormsControls';
+import { createField, GetStringKeys } from '../../../common/FormsControls/FormsControls';
 
 type PropsType = {};
 
@@ -13,19 +10,15 @@ export type AddPostFormValuesType = {
   newPostText: string;
 };
 
-type AddPostFormValuesTypeKeys = GetStringCase<AddPostFormValuesType>;
-const AddPostForm: React.FC<
-  InjectedFormProps<AddPostFormValuesType, PropsType> & PropsType
-> = (props) => {
+type AddPostFormValuesTypeKeys = GetStringKeys<AddPostFormValuesType>;
+
+const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> & PropsType> = (
+  props,
+) => {
   return (
     <form onSubmit={props.handleSubmit}>
       <div>
-        {createField<AddPostFormValuesTypeKeys>(
-          "Your post",
-          "newPostText",
-          [required],
-          Input
-        )}
+        {createField<AddPostFormValuesTypeKeys>('Your post', 'newPostText', [required], Input)}
       </div>
       <div>
         <button>Add post</button>
@@ -35,5 +28,5 @@ const AddPostForm: React.FC<
 };
 
 export default reduxForm<AddPostFormValuesType, PropsType>({
-  form: "profile-add-post",
+  form: 'profile-add-post',
 })(AddPostForm);

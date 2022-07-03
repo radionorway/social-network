@@ -1,21 +1,18 @@
-import React from "react";
-import { Field, WrappedFieldMetaProps, WrappedFieldProps } from "redux-form";
-import { FieldValidatorType } from "../../../utilities/validators/validators";
-import styles from "./FormsControls.module.css";
+import React from 'react';
+import { Field, WrappedFieldMetaProps, WrappedFieldProps } from 'redux-form';
+import { FieldValidatorType } from '../../../utilities/validators/validators';
+import styles from './FormsControls.module.css';
 
 type FormControlPropsType = {
   meta: WrappedFieldMetaProps;
   children: React.ReactNode;
 };
 
-const FormControl: React.FC<FormControlPropsType> = ({
-  meta: { touched, error },
-  children,
-}) => {
+const FormControl: React.FC<FormControlPropsType> = ({ meta: { touched, error }, children }) => {
   const hasError = touched && error;
 
   return (
-    <div className={styles.formControl + " " + (hasError ? styles.error : "")}>
+    <div className={styles.formControl + ' ' + (hasError ? styles.error : '')}>
       <div>{children}</div>
       {hasError && <span>{error}</span>}
     </div>
@@ -23,7 +20,7 @@ const FormControl: React.FC<FormControlPropsType> = ({
 };
 
 export const Textarea: React.FC<WrappedFieldProps> = (props) => {
-  const { input, meta, child, ...restProps } = props;
+  const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
       <textarea {...props.input} {...restProps} />
@@ -32,7 +29,7 @@ export const Textarea: React.FC<WrappedFieldProps> = (props) => {
 };
 
 export const Input: React.FC<WrappedFieldProps> = (props) => {
-  const { input, meta, child, ...restProps } = props;
+  const { input, meta, ...restProps } = props;
   return (
     <FormControl {...props}>
       <input {...input} {...restProps} />
@@ -46,7 +43,7 @@ export function createField<FormKeysType extends string>(
   validators: Array<FieldValidatorType>,
   component: React.FC<WrappedFieldProps>,
   props = {},
-  text = ""
+  text = '',
 ) {
   return (
     <div>
@@ -62,4 +59,4 @@ export function createField<FormKeysType extends string>(
   );
 }
 
-export type GetStringCase<T> = Extract<keyof T, string>;
+export type GetStringKeys<T> = Extract<keyof T, string>;

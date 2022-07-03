@@ -5,7 +5,7 @@ export type PostType = {
 };
 
 export type ContactsType = {
-  gihub: string;
+  github: string;
   vk: string;
   facebook: string;
   instagram: string;
