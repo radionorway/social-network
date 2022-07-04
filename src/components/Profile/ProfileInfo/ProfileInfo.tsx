@@ -45,7 +45,7 @@ const ProfileInfo: React.FC<PropsType> = ({
     <div>
       <div className={s.descriptionBlock}>
         <img src={profile.photos.large || userPhoto} className={s.mainPhoto} />
-        {isOwner && <input type={'file'} onChange={onMainPhotoSelected} />}
+        {isOwner && <input className={s.file} type={'file'} onChange={onMainPhotoSelected} />}
         {editMode ? (
           <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
         ) : (

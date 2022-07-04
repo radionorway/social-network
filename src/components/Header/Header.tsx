@@ -23,9 +23,9 @@ export const Header: React.FC<MapPropsType> = (props) => {
     <Header className="header">
       <Row>
         <Col span={18}>
-          <Menu theme="dark" mode="horizontal" defaultSelectedKeys={['2']}>
+          <Menu theme="dark" mode="horizontal">
             <Menu.Item key="1">
-              <Link to="/developers">Developers</Link>
+              <Link to="/profile">My profile</Link>
             </Menu.Item>
           </Menu>
         </Col>

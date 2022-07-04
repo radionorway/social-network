@@ -1,5 +1,6 @@
-import React from "react";
-import s from "./Post.module.css";
+import React from 'react';
+import s from './Post.module.css';
+import UserPhoto from '../../../../assets/images/user.png';
 
 type PropsType = {
   message: string;
@@ -8,7 +9,7 @@ type PropsType = {
 const Post: React.FC<PropsType> = (props) => {
   return (
     <div className={s.item}>
-      <img src="https://static.vecteezy.com/system/resources/previews/002/275/847/original/male-avatar-profile-icon-of-smiling-caucasian-man-vector.jpg" />
+      <img src={UserPhoto} />
       {props.message}
       <div>
         <span>like</span> {props.likesCount}
