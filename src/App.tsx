@@ -1,14 +1,14 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { withRouter } from './hoc/withRouter';
 import { compose } from 'redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/Preloader/Preloader';
 import store from './redux/redux-store';
-import { BrowserRouter } from 'react-router-dom';
+
 import { AppStateType } from './redux/redux-store';
 import { UsersPage } from './components/Users/UsersContainer';
 import { LoginPage } from './components/Login/LoginPage';

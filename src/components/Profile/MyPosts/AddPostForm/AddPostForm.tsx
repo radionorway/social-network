@@ -1,6 +1,5 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
-import { required } from '../../../../utilities/validators/validators';
 import { Input } from '../../../common/FormsControls/FormsControls';
 import { createField, GetStringKeys } from '../../../common/FormsControls/FormsControls';
 
@@ -17,9 +16,7 @@ const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> 
 ) => {
   return (
     <form onSubmit={props.handleSubmit}>
-      <div>
-        {createField<AddPostFormValuesTypeKeys>('Your post', 'newPostText', [required], Input)}
-      </div>
+      <div>{createField<AddPostFormValuesTypeKeys>('Your post', 'newPostText', [], Input)}</div>
       <div>
         <button>Add post</button>
       </div>

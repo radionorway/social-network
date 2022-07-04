@@ -1,6 +1,6 @@
 import React from 'react';
 import { InjectedFormProps, reduxForm } from 'redux-form';
-import { maxLengthCreator, required } from '../../../utilities/validators/validators';
+import { maxLengthCreator } from '../../../utilities/validators/validators';
 import { Textarea, createField } from '../../common/FormsControls/FormsControls';
 import { NewMessageFormValuesType } from '../Dialogs';
 
@@ -17,7 +17,7 @@ const AddMessageForm: React.FC<
         {createField<NewMessageFormValuesKeysType>(
           'Enter your message',
           'newMessageBody',
-          [required, maxLength50],
+          [maxLength50],
           Textarea,
         )}
       </div>

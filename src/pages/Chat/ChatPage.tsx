@@ -96,7 +96,6 @@ const AddMessageForm: React.FC<{}> = () => {
     dispatch(sendMessage(message));
     setMessage('');
   };
-  debugger;
   return (
     <div>
       <div>
