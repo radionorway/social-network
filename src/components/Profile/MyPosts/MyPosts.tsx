@@ -17,6 +17,7 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
 
   let onAddPost = (values: AddPostFormValuesType) => {
     props.addPost(values.newPostText);
+    values.newPostText = '';
   };
 
   return (

@@ -19,15 +19,15 @@ export const Header: React.FC<MapPropsType> = (props) => {
 
   const { Header } = Layout;
 
+  const items = [
+    { label: <Link to="/profile">My profile</Link>, key: '1', icon: <UserOutlined /> },
+  ];
+
   return (
     <Header className="header">
       <Row>
         <Col span={18}>
-          <Menu theme="dark" mode="horizontal">
-            <Menu.Item key="1">
-              <Link to="/profile">My profile</Link>
-            </Menu.Item>
-          </Menu>
+          <Menu theme="dark" mode="horizontal" items={items} />
         </Col>
 
         {isAuth ? (

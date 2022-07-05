@@ -24,6 +24,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
 
   let addNewMessage = (values: NewMessageFormValuesType) => {
     props.sendMessage(values.newMessageBody);
+    values.newMessageBody = '';
   };
 
   return (
