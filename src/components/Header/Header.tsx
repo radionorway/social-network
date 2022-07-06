@@ -19,15 +19,14 @@ export const Header: React.FC<MapPropsType> = (props) => {
 
   const { Header } = Layout;
 
-  const items = [
-    { label: <Link to="/profile">My profile</Link>, key: '1', icon: <UserOutlined /> },
-  ];
-
   return (
     <Header className="header">
       <Row>
         <Col span={18}>
-          <Menu theme="dark" mode="horizontal" items={items} />
+          <img
+            style={{ width: '40px' }}
+            src="https://cdn0.iconfinder.com/data/icons/business-and-finance-colored-3/64/business-and-finance-colored-3-11-512.png"
+          />
         </Col>
 
         {isAuth ? (

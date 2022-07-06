@@ -16,7 +16,7 @@ import { UserOutlined, LaptopOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -89,7 +89,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
             </Content>
           </Layout>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>Social Network</Footer>
       </Layout>
     );
   }

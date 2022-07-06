@@ -18,7 +18,7 @@ const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> 
     <form onSubmit={props.handleSubmit}>
       <div>{createField<AddPostFormValuesTypeKeys>('Your post', 'newPostText', [], Input)}</div>
       <div>
-        <button>Add post</button>
+        <button style={{ margin: '5px 0 0 0' }}>Add post</button>
       </div>
     </form>
   );

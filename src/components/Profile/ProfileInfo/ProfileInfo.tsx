@@ -74,7 +74,9 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, goToEdi
     <div>
       {isOwner && (
         <div>
-          <button onClick={goToEditMode}>edit</button>
+          <button className={s.edit} onClick={goToEditMode}>
+            edit
+          </button>
         </div>
       )}
       <div>

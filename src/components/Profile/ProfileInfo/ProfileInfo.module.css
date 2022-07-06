@@ -12,5 +12,9 @@
 
 .file {
   display: block;
-  margin: 10px 0px;
+  margin: 5px 0px;
+}
+
+.edit {
+  margin-bottom: 5px;
 }
