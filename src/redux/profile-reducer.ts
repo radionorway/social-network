@@ -13,7 +13,7 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
   switch (action.type) {
     case 'SN/PROFILE/ADD-POST': {
       let newPost = {
-        id: 5,
+        id: state.posts.length + 1,
         message: action.newPostText,
         likesCount: 0,
       };
@@ -122,6 +122,7 @@ export const saveProfile =
       } else {
         throw new Error("userId can't be null");
       }
+    } else {
       dispatch(
         stopSubmit('edit-profile', {
           _error: data.messages[0],
