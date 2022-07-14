@@ -1,4 +1,4 @@
-import preloader from '../../../assets/images/preloader.gif';
+import preloader from '../../../assets/images/Preloader.svg';
 import React from 'react';
 let Preloader: React.FC = () => {
   return (

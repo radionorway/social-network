@@ -16,7 +16,7 @@ import { UserOutlined, LaptopOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 
-const { Content, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -43,7 +43,6 @@ class App extends Component<MapPropsType & DispatchPropsType> {
     if (!this.props.initialized) {
       return <Preloader />;
     }
-
     const items = [
       {
         label: 'Profiles',
@@ -64,32 +63,41 @@ class App extends Component<MapPropsType & DispatchPropsType> {
         ],
       },
     ];
-
     return (
-      <Layout>
-        <Header />
-        <Content style={{ padding: '0 50px' }}>
-          <Layout className="site-layout-background" style={{ padding: '24px 0' }}>
-            <Sider className="site-layout-background" width={200}>
-              <Menu mode="inline" style={{ height: '100%' }} items={items} />
+      <div className="main-div">
+        <Layout>
+          <Header />
+          <Layout>
+            <Sider
+              breakpoint="lg"
+              collapsedWidth="0"
+              onBreakpoint={(broken) => {
+                console.log(broken);
+              }}
+              onCollapse={(collapsed, type) => {
+                console.log(collapsed, type);
+              }}>
+              <Menu theme="dark" mode="inline" items={items} />
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 675 }}>
-              <Suspense fallback={<Preloader />}>
-                <Routes>
-                  <Route path="/" element={<Navigate to={'/profile'} />} />
-                  <Route path="/dialogs/*" element={<DialogsContainer />} />
-                  <Route path="/profile/:userId" element={<ProfileContainer />} />
-                  <Route path="/developers" element={<UsersPage />} />
-                  <Route path="/profile" element={<ProfileContainer />} />
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/chat" element={<ChatPage />} />
-                  <Route path="*" element={<div>404 NOT FOUND</div>} />
-                </Routes>
-              </Suspense>
-            </Content>
+            <div className="app-content">
+              <Content style={{ margin: '25px 40px' }}>
+                <Suspense fallback={<Preloader />}>
+                  <Routes>
+                    <Route path="/" element={<Navigate to={'/profile'} />} />
+                    <Route path="/dialogs/*" element={<DialogsContainer />} />
+                    <Route path="/profile/:userId" element={<ProfileContainer />} />
+                    <Route path="/developers" element={<UsersPage />} />
+                    <Route path="/profile" element={<ProfileContainer />} />
+                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/chat" element={<ChatPage />} />
+                    <Route path="*" element={<div>404 NOT FOUND</div>} />
+                  </Routes>
+                </Suspense>
+              </Content>
+            </div>
           </Layout>
-        </Content>
-      </Layout>
+        </Layout>
+      </div>
     );
   }
 }

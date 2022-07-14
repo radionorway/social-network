@@ -31,15 +31,7 @@ export const Header: React.FC<MapPropsType> = (props) => {
 
         {isAuth ? (
           <>
-            {' '}
-            <Col span={1}>
-              <Avatar
-                alt={login || ''}
-                style={{ backgroundColor: '#3363a1' }}
-                icon={<UserOutlined />}
-              />
-            </Col>
-            <Col span={5}>
+            <Col span={6}>
               <Button onClick={logoutCallback}>Log out</Button>
             </Col>
           </>
