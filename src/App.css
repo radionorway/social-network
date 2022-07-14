@@ -1,3 +1,7 @@
+.app-wrapper {
+  overflow: hidden;
+}
+
 .app-content {
   min-height: 100vh;
 }

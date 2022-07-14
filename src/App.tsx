@@ -16,7 +16,7 @@ import { UserOutlined, LaptopOutlined } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import { Header } from './components/Header/Header';
 
-const { Content, Footer, Sider } = Layout;
+const { Content, Sider } = Layout;
 
 const DialogsContainer = React.lazy(() => import('./components/Dialogs/DialogsContainer'));
 const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileContainer'));
@@ -64,7 +64,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
       },
     ];
     return (
-      <div className="main-div">
+      <div className="app-wrapper">
         <Layout>
           <Header />
           <Layout>
@@ -80,7 +80,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
               <Menu theme="dark" mode="inline" items={items} />
             </Sider>
             <div className="app-content">
-              <Content style={{ margin: '25px 40px' }}>
+              <Content className="content" style={{ margin: '25px 40px' }}>
                 <Suspense fallback={<Preloader />}>
                   <Routes>
                     <Route path="/" element={<Navigate to={'/profile'} />} />
