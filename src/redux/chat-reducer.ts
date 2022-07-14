@@ -28,6 +28,11 @@ const chatReducer = (state = initialState, action: ActionsType): InitialStateTyp
         ...state,
         status: action.payload.status,
       };
+    case 'SN/chat/MESSAGES_CLEANED':
+      return {
+        ...state,
+        messages: [],
+      };
 
     default:
       return state;
@@ -45,6 +50,10 @@ export const actions = {
     ({
       type: 'SN/chat/STATUS_CHANGED',
       payload: { status },
+    } as const),
+  messagesCleaned: () =>
+    ({
+      type: 'SN/chat/MESSAGES_CLEANED',
     } as const),
 };
 
@@ -78,6 +87,7 @@ export const stopMessagesListening = (): ThunkType => async (dispatch) => {
   chatAPI.unsubscribe('messages-received', newMessageHandlerCreator(dispatch));
   chatAPI.unsubscribe('status-changed', statusChangedHandlerCreator(dispatch));
   chatAPI.stop();
+  dispatch(actions.messagesCleaned());
 };
 
 export const sendMessage =

@@ -25,12 +25,10 @@ const errorHandler = () => {
 };
 
 const cleanUp = () => {
-  if (ws !== null) {
-    ws.removeEventListener('close', closeHandler);
-    ws.removeEventListener('message', messageHandler);
-    ws.removeEventListener('open', openHandler);
-    ws.removeEventListener('error', errorHandler);
-  }
+  ws?.removeEventListener('close', closeHandler);
+  ws?.removeEventListener('message', messageHandler);
+  ws?.removeEventListener('open', openHandler);
+  ws?.removeEventListener('error', errorHandler);
 };
 
 const notifySubscribersAboutStatus = (status: StatusType) => {
@@ -39,9 +37,7 @@ const notifySubscribersAboutStatus = (status: StatusType) => {
 
 function createChannel() {
   cleanUp();
-  if (ws !== null) {
-    ws.close();
-  }
+  ws?.close();
   ws = new WebSocket('wss://social-network.samuraijs.com/handlers/ChatHandler.ashx');
   notifySubscribersAboutStatus('pending');
   ws.addEventListener('close', closeHandler);
@@ -58,9 +54,7 @@ export const chatAPI = {
     subscribers['messages-received'] = [];
     subscribers['status-changed'] = [];
     cleanUp();
-    if (ws !== null) {
-      ws.close();
-    }
+    ws?.close();
   },
 
   subscribe(
@@ -82,9 +76,7 @@ export const chatAPI = {
     subscribers[eventName] = subscribers[eventName].filter((s) => s !== callback);
   },
   sendMessage(message: string) {
-    if (ws !== null) {
-      ws.send(message);
-    }
+    ws?.send(message);
   },
 };
 

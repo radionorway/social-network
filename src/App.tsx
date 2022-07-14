@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { connect, Provider } from 'react-redux';
 import { withRouter } from './hoc/withRouter';
 import { compose } from 'redux';
@@ -73,7 +73,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
             <Sider className="site-layout-background" width={200}>
               <Menu mode="inline" style={{ height: '100%' }} items={items} />
             </Sider>
-            <Content style={{ padding: '0 24px', minHeight: 280 }}>
+            <Content style={{ padding: '0 24px', minHeight: 675 }}>
               <Suspense fallback={<Preloader />}>
                 <Routes>
                   <Route path="/" element={<Navigate to={'/profile'} />} />
@@ -105,11 +105,11 @@ let AppContainer = compose<React.ComponentType>(
 
 const MainApp: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 

@@ -35,7 +35,7 @@ export const Header: React.FC<MapPropsType> = (props) => {
             <Col span={1}>
               <Avatar
                 alt={login || ''}
-                style={{ backgroundColor: '#87d068' }}
+                style={{ backgroundColor: '#3363a1' }}
                 icon={<UserOutlined />}
               />
             </Col>

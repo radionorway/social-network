@@ -18,8 +18,8 @@ const ChatPage: React.FC = () => {
 
 const Chat: React.FC = () => {
   const dispatch = useDispatch();
-
   const status = useSelector((state: AppStateType) => state.chat.status);
+
   useEffect(() => {
     dispatch(startMessagesListening());
     return () => {
@@ -48,7 +48,7 @@ const Messages: React.FC<{}> = ({}) => {
     if (Math.abs(element.scrollHeight - element.scrollTop - element.clientHeight) < 300) {
       !isAutoScroll && setIsAutoScroll(true);
     } else {
-      !isAutoScroll && setIsAutoScroll(false);
+      isAutoScroll && setIsAutoScroll(false);
     }
   };
 
