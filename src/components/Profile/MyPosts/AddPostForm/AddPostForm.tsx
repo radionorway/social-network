@@ -1,15 +1,16 @@
-import React from 'react';
-import { InjectedFormProps, reduxForm } from 'redux-form';
-import { Input } from '../../../common/FormsControls/FormsControls';
-import { createField, GetStringKeys } from '../../../common/FormsControls/FormsControls';
+import { Button } from 'antd'
+import React from 'react'
+import { InjectedFormProps, reduxForm } from 'redux-form'
+import { Input } from '../../../common/FormsControls/FormsControls'
+import { createField, GetStringKeys } from '../../../common/FormsControls/FormsControls'
 
-type PropsType = {};
+type PropsType = {}
 
 export type AddPostFormValuesType = {
-  newPostText: string;
-};
+  newPostText: string
+}
 
-type AddPostFormValuesTypeKeys = GetStringKeys<AddPostFormValuesType>;
+type AddPostFormValuesTypeKeys = GetStringKeys<AddPostFormValuesType>
 
 const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> & PropsType> = (
   props,
@@ -18,12 +19,12 @@ const AddPostForm: React.FC<InjectedFormProps<AddPostFormValuesType, PropsType> 
     <form onSubmit={props.handleSubmit}>
       <div>{createField<AddPostFormValuesTypeKeys>('Your post', 'newPostText', [], Input)}</div>
       <div>
-        <button style={{ margin: '5px 0 0 0' }}>Add post</button>
+        <Button style={{ margin: '5px 0 0 0' }}>Add post</Button>
       </div>
     </form>
-  );
-};
+  )
+}
 
 export default reduxForm<AddPostFormValuesType, PropsType>({
   form: 'profile-add-post',
-})(AddPostForm);
+})(AddPostForm)

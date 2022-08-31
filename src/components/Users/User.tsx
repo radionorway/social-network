@@ -1,15 +1,15 @@
-import React from 'react';
-import styles from './users.module.css';
-import userPhoto from '../../assets/images/user.png';
-import { NavLink } from 'react-router-dom';
-import { UserType } from '../../types/types';
+import React from 'react'
+import styles from './users.module.css'
+import userPhoto from '../../assets/images/user.png'
+import { NavLink } from 'react-router-dom'
+import { UserType } from '../../types/types'
 
 type PropsType = {
-  user: UserType;
-  followingInProgress: Array<number>;
-  unfollow: (userId: number) => void;
-  follow: (userId: number) => void;
-};
+  user: UserType
+  followingInProgress: Array<number>
+  unfollow: (userId: number) => void
+  follow: (userId: number) => void
+}
 
 const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
   return (
@@ -28,7 +28,7 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
             <button
               disabled={followingInProgress.some((id) => id === user.id)}
               onClick={() => {
-                unfollow(user.id);
+                unfollow(user.id)
               }}>
               Unfollow
             </button>
@@ -36,7 +36,7 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
             <button
               disabled={followingInProgress.some((id) => id === user.id)}
               onClick={() => {
-                follow(user.id);
+                follow(user.id)
               }}>
               Follow
             </button>
@@ -50,7 +50,7 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
         </span>
       </span>
     </div>
-  );
-};
+  )
+}
 
-export default User;
+export default User

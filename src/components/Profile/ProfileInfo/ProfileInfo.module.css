@@ -14,8 +14,13 @@
 .file {
   display: block;
   margin: 5px 0px;
+  display: none;
 }
 
 .edit {
   margin-bottom: 5px;
+}
+
+.label {
+  cursor: pointer;
 }
