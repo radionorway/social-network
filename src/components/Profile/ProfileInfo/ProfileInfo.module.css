@@ -1,10 +1,7 @@
-.descriptionBlock {
-  padding: 10px;
-}
-
 .mainPhoto {
-  max-width: 200px;
+  max-width: 300px;
   margin-bottom: 20px;
+  display: block;
 }
 
 .contact {
@@ -18,9 +15,44 @@
 }
 
 .edit {
-  margin-bottom: 5px;
+  margin: 10px 0px;
 }
 
 .label {
   cursor: pointer;
+}
+
+.profileWrapper {
+  display: grid;
+  grid-template-areas:
+    'n n'
+    'a d'
+    'p p';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 120px 1fr;
+  grid-gap: 10px;
+}
+
+.nameBlock {
+  grid-area: n;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 5px;
+  background-color: #d6dce0;
+}
+
+.avatarBlock {
+  grid-area: a;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 20px;
+  background-color: #d6dce0;
+}
+
+.descriptionBlock {
+  grid-area: d;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 20px;
+  background-color: #d6dce0;
 }

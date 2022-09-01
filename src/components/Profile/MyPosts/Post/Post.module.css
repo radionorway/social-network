@@ -7,3 +7,7 @@
   border-radius: 30px;
   margin-right: 10px;
 }
+
+.avatar {
+  border: 2px solid #001529;
+}

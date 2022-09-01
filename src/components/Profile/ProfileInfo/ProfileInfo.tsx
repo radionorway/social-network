@@ -5,7 +5,7 @@ import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import userPhoto from '../../../assets/images/user.png'
 import ProfileDataForm from './ProfileDataForm'
 import { ContactsType, ProfileType } from '../../../types/types'
-import { Button } from 'antd'
+import { Button, Tabs, Typography } from 'antd'
 
 type PropsType = {
   profile: ProfileType | null
@@ -25,6 +25,7 @@ const ProfileInfo: React.FC<PropsType> = ({
   saveProfile,
 }) => {
   let [editMode, setEditMode] = useState(false)
+  const { Title } = Typography
 
   if (!profile) {
     return <Preloader />
@@ -44,18 +45,26 @@ const ProfileInfo: React.FC<PropsType> = ({
   }
 
   return (
-    <div>
+    <div className={s.profileWrapper}>
+      <div className={s.nameBlock}>
+        <Title>
+          <span>{profile.fullName}</span>
+        </Title>
+        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
+      </div>
       <input className={s.file} type={'file'} id='file' onChange={onMainPhotoSelected} />
-      <div className={s.descriptionBlock}>
+      <div className={s.avatarBlock}>
         <img src={profile.photos.large || userPhoto} className={s.mainPhoto} />
         {isOwner && (
           <Button>
-            {/* @ts-ignore */}
-            <label for='file' className={s.label}>
+            <label htmlFor='file' className={s.label}>
               <span>Upload Photo</span>
             </label>
           </Button>
         )}
+      </div>
+
+      <div className={s.descriptionBlock}>
         {editMode ? (
           <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
         ) : (
@@ -67,7 +76,6 @@ const ProfileInfo: React.FC<PropsType> = ({
             isOwner={isOwner}
           />
         )}
-        <ProfileStatusWithHooks status={status} updateStatus={updateStatus} />
       </div>
     </div>
   )
@@ -80,41 +88,44 @@ type ProfileDataPropsType = {
 }
 
 const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, goToEditMode }) => {
+  const { TabPane } = Tabs
+
+  const operations = (
+    <Button className={s.edit} onClick={goToEditMode}>
+      Edit
+    </Button>
+  )
+
   return (
     <div>
-      {isOwner && (
-        <div>
-          <Button className={s.edit} onClick={goToEditMode}>
-            edit
-          </Button>
-        </div>
-      )}
-      <div>
-        <b>Full name </b>: {profile.fullName}
-      </div>
-      <div>
-        <b>Looking for a job </b>: {profile.lookingForAJob ? 'yes' : 'no'}
-      </div>
-      {profile.lookingForAJob && (
-        <div>
-          <b>My professional skills </b>: {profile.lookingForAJobDescription}
-        </div>
-      )}
-      <div>
-        <b>About me</b>: {profile.aboutMe}
-      </div>
-      <div>
-        <b>Contacts</b>:{' '}
-        {Object.keys(profile.contacts).map((key) => {
-          return (
-            <Contact
-              key={key}
-              contactTitle={key}
-              contactValue={profile.contacts[key as keyof ContactsType]}
-            />
-          )
-        })}
-      </div>
+      <Tabs tabBarExtraContent={operations}>
+        <TabPane tab='Information' key='1'>
+          <div>
+            <b>Looking for a job </b>: {profile.lookingForAJob ? 'yes' : 'no'}
+          </div>
+          {profile.lookingForAJob && (
+            <div>
+              <b>My professional skills </b>: {profile.lookingForAJobDescription}
+            </div>
+          )}
+          <div>
+            <b>About me</b>: {profile.aboutMe}
+          </div>
+        </TabPane>
+        <TabPane tab='Contacts' key='2'>
+          <div>
+            {Object.keys(profile.contacts).map((key) => {
+              return (
+                <Contact
+                  key={key}
+                  contactTitle={key}
+                  contactValue={profile.contacts[key as keyof ContactsType]}
+                />
+              )
+            })}
+          </div>
+        </TabPane>
+      </Tabs>
     </div>
   )
 }

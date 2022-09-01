@@ -1,5 +1,10 @@
 .postsBlock {
-  padding: 10px;
+  display: grid;
+  grid-area: p;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 20px;
+  background-color: #d6dce0;
 }
 
 .posts {
