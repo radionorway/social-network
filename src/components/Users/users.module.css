@@ -1,4 +1,39 @@
+.userBlock {
+  display: grid;
+  grid-template-areas: 'a i b';
+  grid-template-columns: 1fr 8fr 1fr;
+  align-items: center;
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 20px;
+  background-color: #d6dce0;
+  width: 160vh;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  grid-area: a;
+}
+
+.information {
+  grid-area: i;
+}
+
+.buttons {
+  grid-area: b;
+}
+
 .userPhoto {
-  width: 50px;
-  height: 50px;
+  border-radius: 50px;
+  width: 64px;
+  height: 64px;
+}
+
+.preloader {
+  display: inline-block;
+  margin-left: 20px;
+}
+
+.paginator {
+  display: inline-block;
 }

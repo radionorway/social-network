@@ -1,14 +1,43 @@
 .dialogs {
+  padding: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  background-color: #d6dce0;
+  min-width: 700px;
+  height: 500px;
+  overflow-y: scroll;
+  padding: 30px;
+}
+
+.form {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  padding: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  background-color: #d6dce0;
+}
+
+.name {
   display: grid;
-  grid-template-columns: 2fr 10fr;
+  grid-template-areas:
+    'a u'
+    'a s';
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  padding: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  background-color: #d6dce0;
 }
-.dialogsItems {
-  padding: 10px;
-  color: white;
+
+.avatar {
+  grid-area: a;
 }
-.messages {
-  padding: 10px;
+
+.userName {
+  grid-area: u;
 }
-.messages .message {
-  color: white;
+
+.status {
+  grid-area: s;
 }

@@ -5,7 +5,8 @@ import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import userPhoto from '../../../assets/images/user.png'
 import ProfileDataForm from './ProfileDataForm'
 import { ContactsType, ProfileType } from '../../../types/types'
-import { Button, Tabs, Typography } from 'antd'
+import { Button, Spin, Tabs, Typography } from 'antd'
+import { EditOutlined } from '@ant-design/icons'
 
 type PropsType = {
   profile: ProfileType | null
@@ -28,7 +29,7 @@ const ProfileInfo: React.FC<PropsType> = ({
   const { Title } = Typography
 
   if (!profile) {
-    return <Preloader />
+    return <Spin size='large' />
   }
 
   const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
@@ -90,26 +91,24 @@ type ProfileDataPropsType = {
 const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, goToEditMode }) => {
   const { TabPane } = Tabs
 
-  const operations = (
-    <Button className={s.edit} onClick={goToEditMode}>
-      Edit
-    </Button>
-  )
+  const operations = <EditOutlined onClick={goToEditMode} />
+
+  const { Text } = Typography
 
   return (
     <div>
       <Tabs tabBarExtraContent={operations}>
         <TabPane tab='Information' key='1'>
           <div>
-            <b>Looking for a job </b>: {profile.lookingForAJob ? 'yes' : 'no'}
+            <Text strong>Looking for a job </Text>: {profile.lookingForAJob ? 'yes' : 'no'}
           </div>
           {profile.lookingForAJob && (
             <div>
-              <b>My professional skills </b>: {profile.lookingForAJobDescription}
+              <Text strong>My professional skills </Text>: {profile.lookingForAJobDescription}
             </div>
           )}
           <div>
-            <b>About me</b>: {profile.aboutMe}
+            <Text strong>About me</Text>: {profile.aboutMe}
           </div>
         </TabPane>
         <TabPane tab='Contacts' key='2'>
@@ -134,9 +133,10 @@ type ContactsPropsType = {
   contactValue: string
 }
 const Contact: React.FC<ContactsPropsType> = ({ contactTitle, contactValue }) => {
+  const { Text } = Typography
   return (
     <div className={s.contact}>
-      <b>{contactTitle}</b>: {contactValue}
+      <Text strong>{contactTitle}</Text>: {contactValue}
     </div>
   )
 }

@@ -20,6 +20,7 @@ export const Header: React.FC = () => {
   const { Header } = Layout
   const { Text } = Typography
 
+  debugger
   return (
     <Header>
       <Row>

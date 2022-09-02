@@ -1,0 +1,15 @@
+.message {
+  color: white;
+  display: flex;
+}
+
+.messageContent {
+  width: fit-content;
+  background-color: lightskyblue;
+  border-radius: 3px;
+  padding: 10px;
+  display: flex;
+}
+.message:nth-child(odd) {
+  justify-content: end;
+}

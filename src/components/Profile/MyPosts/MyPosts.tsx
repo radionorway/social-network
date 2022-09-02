@@ -10,6 +10,7 @@ export type MapPropsType = {
 export type DispatchPropsType = {
   addPost: (newPostText: string) => void
 }
+
 const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
   let postsElements = [...props.posts].reverse().map((p) => <Post key={p.id} message={p.message} />)
 
