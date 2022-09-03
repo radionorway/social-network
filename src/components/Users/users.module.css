@@ -6,8 +6,8 @@
   border-radius: 5px;
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
-  background-color: #d6dce0;
-  width: 160vh;
+  background-color: #e6ebf3;
+  width: 1300px;
   margin-bottom: 10px;
 }
 
@@ -36,4 +36,64 @@
 
 .paginator {
   display: inline-block;
+}
+
+.form {
+  width: 360px;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 1280px) {
+  .userBlock {
+    width: 1000px;
+    grid-gap: 10px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .userBlock {
+    width: 700px;
+  }
+}
+@media (max-width: 950px) {
+  .userBlock {
+    width: 800px;
+  }
+}
+
+@media (max-width: 850px) {
+  .userBlock {
+    width: 700px;
+  }
+}
+
+@media (max-width: 767px) {
+  .userBlock {
+    width: 500px;
+  }
+}
+
+@media (max-width: 600px) {
+  .userBlock {
+    width: 450px;
+  }
+}
+
+@media (max-width: 500px) {
+  .userBlock {
+    width: 300px;
+  }
+  .form {
+    flex-direction: column;
+    width: 300px;
+  }
+}
+@media (max-width: 281px) {
+  .userBlock {
+    width: 200px;
+    grid-template-areas:
+      'a i'
+      'b b';
+  }
 }

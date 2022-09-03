@@ -48,6 +48,7 @@ export function createField<FormKeysType extends string>(
   return (
     <div>
       <Field
+        className={styles.form}
         placeholder={placeholder}
         name={name}
         validate={validators}

@@ -1,4 +1,4 @@
-import { Typography } from 'antd'
+import { Button, Typography } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { ChatMessageAPIType } from '../../api/chat-api'
@@ -102,12 +102,15 @@ const AddMessageForm: React.FC<{}> = () => {
   return (
     <div>
       <div>
-        <textarea onChange={(e) => setMessage(e.currentTarget.value)} value={message}></textarea>
+        <textarea
+          className={s.textInput}
+          onChange={(e) => setMessage(e.currentTarget.value)}
+          value={message}></textarea>
       </div>
       <div>
-        <button disabled={status !== 'ready'} onClick={sendMessageHandler}>
+        <Button htmlType='submit' disabled={status !== 'ready'} onClick={sendMessageHandler}>
           Send
-        </button>
+        </Button>
       </div>
     </div>
   )

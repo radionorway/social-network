@@ -1,17 +1,13 @@
-import { Avatar, Button, Col, Layout, Row, Typography } from 'antd'
+import { Button, Col, Layout, Row, Typography } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
-import { getProfilePhoto, selectIsAuth } from '../../redux/auth-selectors'
-import { selectCurrentUserLogin } from '../../redux/auth-selectors'
+import { selectIsAuth } from '../../redux/auth-selectors'
 import { logout } from '../../redux/auth-reducer'
 import s from './Header.module.css'
-import { NavLink } from 'react-router-dom'
 
 export const Header: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)
-  const login = useSelector(selectCurrentUserLogin)
-  const small = useSelector(getProfilePhoto)
   const dispatch = useDispatch()
   const logoutCallback = () => {
     dispatch(logout())
@@ -19,10 +15,8 @@ export const Header: React.FC = () => {
 
   const { Header } = Layout
   const { Text } = Typography
-
-  debugger
   return (
-    <Header>
+    <Header className={s.header}>
       <Row>
         <Col span={21}>
           <img
@@ -37,21 +31,11 @@ export const Header: React.FC = () => {
         {isAuth ? (
           <>
             <Col span={1}>
-              <NavLink to={'/profile'}>
-                <Avatar
-                  alt={login || ''}
-                  style={{ border: '2px solid #e7e8ec' }}
-                  src={small}
-                  size={'large'}
-                />
-              </NavLink>
-            </Col>
-            <Col span={1}>
               <Button onClick={logoutCallback}>Log out</Button>
             </Col>
           </>
         ) : (
-          <Col span={6}>
+          <Col span={1}>
             <Button>
               <Link to={'/login'}>Login</Link>
             </Button>

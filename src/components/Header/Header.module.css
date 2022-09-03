@@ -6,3 +6,9 @@
 .title {
   color: white;
 }
+
+.header {
+  padding-left: 20px;
+  padding-bottom: 5px;
+  height: 9vh;
+}

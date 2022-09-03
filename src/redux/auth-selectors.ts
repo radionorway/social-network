@@ -15,3 +15,7 @@ export const getProfilePhoto = (state: AppStateType) => {
 export const getUserName = (state: AppStateType) => {
   return state.profilePage.profile?.fullName
 }
+
+export const getProfile = (state: AppStateType) => {
+  return state.profilePage.profile
+}

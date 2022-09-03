@@ -1,4 +1,7 @@
+import { Spin } from 'antd'
 import React from 'react'
+import { useSelector } from 'react-redux'
+import { getProfile } from '../../../redux/auth-selectors'
 import { PostType } from '../../../types/types'
 import AddPostForm, { AddPostFormValuesType } from './AddPostForm/AddPostForm'
 import s from './MyPosts.module.css'
@@ -19,6 +22,11 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
       props.addPost(values.newPostText)
       values.newPostText = ''
     }
+  }
+
+  const profile = useSelector(getProfile)
+  if (!profile) {
+    return <></>
   }
 
   return (

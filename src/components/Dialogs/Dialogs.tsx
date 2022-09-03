@@ -1,9 +1,8 @@
-import { DeleteOutlined, MobileOutlined } from '@ant-design/icons'
+import { MobileOutlined } from '@ant-design/icons'
 import { Avatar, Typography } from 'antd'
 import React from 'react'
 import { InitialStateType } from '../../redux/dialogs-reducer'
 import AddMessageForm from './AddMessageForm/AddMessageForm'
-import DialogsItem from './DialogItem/DialogsItem'
 import s from './Dialogs.module.css'
 import Message from './Message/Message'
 
@@ -31,7 +30,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
   const { Text } = Typography
 
   return (
-    <div>
+    <div className={s.container}>
       <div className={s.name}>
         <div className={s.avatar}>
           <Avatar
@@ -48,8 +47,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
           <Text strong>Andrew Sokolov</Text>
         </div>
         <div className={s.status}>
-          <Text>online</Text>
-          <MobileOutlined />
+          <Text>online</Text> <MobileOutlined />
         </div>
       </div>
       <div className={s.dialogs}>

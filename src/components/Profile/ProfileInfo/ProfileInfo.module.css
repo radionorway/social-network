@@ -26,11 +26,13 @@
   display: grid;
   grid-template-areas:
     'n n'
-    'a d'
-    'p p';
+    'a d';
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 120px 1fr;
   grid-gap: 10px;
+  margin-left: 50%;
+  padding-bottom: 10px;
+  min-width: 600px;
 }
 
 .nameBlock {
@@ -38,7 +40,7 @@
   border-radius: 5px;
   border: 1px solid rgb(146, 146, 146);
   padding: 5px;
-  background-color: #d6dce0;
+  background-color: #e6ebf3;
 }
 
 .avatarBlock {
@@ -46,7 +48,8 @@
   border-radius: 5px;
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
-  background-color: #d6dce0;
+  background-color: #e6ebf3;
+  max-width: 340px;
 }
 
 .descriptionBlock {
@@ -54,5 +57,65 @@
   border-radius: 5px;
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
-  background-color: #d6dce0;
+  background-color: #e6ebf3;
+  max-width: 250px;
+}
+
+@media (max-width: 1280px) {
+  .profileWrapper {
+    margin-left: 0%;
+    width: 600px;
+  }
+}
+
+@media (max-width: 540px) {
+  .profileWrapper {
+    grid-template-areas:
+      'n'
+      'a'
+      'd';
+  }
+  .nameBlock {
+    max-width: 400px;
+  }
+  .avatarBlock {
+    max-width: 400px;
+  }
+  .mainPhoto {
+    max-width: 350px;
+  }
+  .descriptionBlock {
+    min-width: 400px;
+  }
+}
+
+@media (max-width: 500px) {
+  .nameBlock {
+    max-width: 300px;
+  }
+  .avatarBlock {
+    max-width: 300px;
+  }
+  .mainPhoto {
+    max-width: 250px;
+  }
+  .descriptionBlock {
+    min-width: 300px;
+  }
+}
+
+@media (max-width: 280px) {
+  .nameBlock {
+    max-width: 200px;
+  }
+  .avatarBlock {
+    max-width: 200px;
+  }
+  .mainPhoto {
+    max-width: 150px;
+  }
+  .descriptionBlock {
+    max-width: 200px;
+    min-width: 200px;
+  }
 }
