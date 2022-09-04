@@ -1,0 +1,22 @@
+.loginWrapper {
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 20px;
+  background-color: #e6ebf3;
+}
+
+.loginWrapper:nth-child() {
+  width: 0%;
+}
+
+.form div div {
+  padding-bottom: 3px;
+  display: flex;
+}
+
+.title {
+  border-radius: 5px;
+  border: 1px solid rgb(146, 146, 146);
+  padding: 10px;
+  background-color: #e6ebf3;
+}
