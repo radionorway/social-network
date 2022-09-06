@@ -18,7 +18,7 @@ export const Header: React.FC = () => {
   return (
     <Header className={s.header}>
       <Row>
-        <Col span={21}>
+        <Col span={23}>
           <img
             className={s.image}
             src='https://cdn0.iconfinder.com/data/icons/business-and-finance-colored-3/64/business-and-finance-colored-3-11-512.png'

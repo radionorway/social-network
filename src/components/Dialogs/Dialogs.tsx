@@ -32,17 +32,10 @@ const Dialogs: React.FC<PropsType> = (props) => {
   return (
     <div className={s.container}>
       <div className={s.name}>
-        <div className={s.avatar}>
-          <Avatar
-            size={40}
-            style={{
-              fontSize: '20px',
-              color: 'rgb(255, 255, 255)',
-              backgroundColor: 'rgb(28, 38, 97)',
-            }}>
-            A
-          </Avatar>
-        </div>
+        <Avatar className={s.avatar} size={40}>
+          A
+        </Avatar>
+
         <div className={s.userName}>
           <Text strong>Andrew Sokolov</Text>
         </div>

@@ -5,9 +5,6 @@ import { authAPI } from '../api/auth-api'
 import { securityAPI } from '../api/security-api'
 import { BaseThunkType, InferActionsTypes } from './redux-store'
 
-const SET_USER_DATA = 'SN/auth/SET_USER_DATA'
-const GET_CAPTCHA_URL_SUCCESS = 'SN/auth/GET_CAPTCHA_URL_SUCCESS'
-
 let initialState = {
   userId: null as number | null,
   email: null as string | null,

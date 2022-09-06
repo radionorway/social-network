@@ -1,5 +1,4 @@
 import React, { ChangeEvent, useState } from 'react'
-import Preloader from '../../common/Preloader/Preloader'
 import s from './ProfileInfo.module.css'
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import userPhoto from '../../../assets/images/user.png'

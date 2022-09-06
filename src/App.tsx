@@ -6,12 +6,11 @@ import { connect, Provider } from 'react-redux'
 import { withRouter } from './hoc/withRouter'
 import { compose } from 'redux'
 import { initializeApp } from './redux/app-reducer'
-import Preloader from './components/common/Preloader/Preloader'
 import store from './redux/redux-store'
 import { AppStateType } from './redux/redux-store'
-import { UsersPage } from './components/Users/UsersContainer'
+import { UsersPage } from './components/Users/Users'
 import { LoginPage } from './components/Login/LoginPage'
-import { Layout, Menu } from 'antd'
+import { Layout, Menu, Spin } from 'antd'
 import { UserOutlined, LaptopOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import { Header } from './components/Header/Header'
@@ -41,7 +40,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
 
   render() {
     if (!this.props.initialized) {
-      return <Preloader />
+      return <Spin size='large' />
     }
     const items = [
       {
@@ -81,7 +80,7 @@ class App extends Component<MapPropsType & DispatchPropsType> {
             </Sider>
             <div className='app-content'>
               <Content className='content' style={{ margin: '25px 40px' }}>
-                <Suspense fallback={<Preloader />}>
+                <Suspense fallback={<Spin size='large' />}>
                   <Routes>
                     <Route path='/' element={<Navigate to={'/profile'} />} />
                     <Route path='/dialogs/*' element={<DialogsContainer />} />

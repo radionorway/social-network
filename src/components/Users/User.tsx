@@ -1,6 +1,5 @@
 import React from 'react'
 import s from './users.module.css'
-import userPhoto from '../../assets/images/user.png'
 import { NavLink } from 'react-router-dom'
 import { UserType } from '../../types/types'
 import { Avatar, Button, Typography } from 'antd'
@@ -19,10 +18,7 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
       <div className={s.avatar}>
         <NavLink to={'./../profile/' + user.id}>
           {user.photos.small ? (
-            <img
-              src={user.photos.small != null ? user.photos.small : userPhoto}
-              className={s.userPhoto}
-            />
+            <img src={user.photos.small} className={s.userPhoto} />
           ) : (
             <Avatar
               size={64}

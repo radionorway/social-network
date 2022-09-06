@@ -6,7 +6,7 @@ import { FilterType } from '../../redux/users-reducer'
 import { getUsersFilter } from '../../redux/users-selectors'
 import s from './users.module.css'
 
-const usersSearchFormValidate = (values: any) => {
+const usersSearchFormValidate = () => {
   const errors = {}
   return errors
 }

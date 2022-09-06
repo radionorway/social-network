@@ -1,7 +1,7 @@
 import { Button } from 'antd'
 import React from 'react'
 import { InjectedFormProps, reduxForm } from 'redux-form'
-import { Input, Textarea } from '../../../common/FormsControls/FormsControls'
+import { Textarea } from '../../../common/FormsControls/FormsControls'
 import { createField, GetStringKeys } from '../../../common/FormsControls/FormsControls'
 
 type PropsType = {}

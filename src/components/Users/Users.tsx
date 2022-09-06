@@ -15,9 +15,7 @@ import User from './User'
 import { UsersSearchForm } from './UsersSearchForm'
 import s from './users.module.css'
 
-type PropsType = {}
-
-export const Users: FC<PropsType> = (props) => {
+export const UsersPage: FC = () => {
   const users = useSelector(getUsers)
   const totalUsersCount = useSelector(getTotalUsersCount)
   const currentPage = useSelector(getCurrentPage)

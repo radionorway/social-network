@@ -1,5 +1,4 @@
 import React, { createElement, useState } from 'react'
-import s from './Post.module.css'
 import { useSelector } from 'react-redux'
 import { getProfilePhoto, getUserName } from '../../../../redux/auth-selectors'
 import { Comment, Tooltip } from 'antd'
@@ -61,15 +60,5 @@ const Post: React.FC<PropsType> = (props) => {
     />
   )
 }
-
-//     <div className={s.item}>
-//       <img className={s.avatar} src={small} />
-//       {props.message}
-//       <div>
-//         <span>like</span> {props.likesCount}
-//       </div>
-//     </div>
-//   )
-// }
 
 export default Post
