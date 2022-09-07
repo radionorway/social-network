@@ -1,7 +1,7 @@
 import React, { Component, Suspense } from 'react'
 import './App.css'
 import 'antd/dist/antd.css'
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
+import { HashRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { connect, Provider } from 'react-redux'
 import { withRouter } from './hoc/withRouter'
 import { compose } from 'redux'
@@ -112,11 +112,11 @@ let AppContainer = compose<React.ComponentType>(
 
 const MainApp: React.FC = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <Provider store={store}>
         <AppContainer />
       </Provider>
-    </BrowserRouter>
+    </HashRouter>
   )
 }
 

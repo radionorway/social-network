@@ -50,12 +50,29 @@
     grid-gap: 10px;
   }
 }
+@media only screen and (max-width: 1024px) {
+  .userBlock {
+    min-width: 70vw;
+  }
+}
 
 @media only screen and (max-width: 600px) {
+  .userBlock {
+    height: 15vh;
+  }
   .form {
     flex-direction: column;
     width: 300px;
   }
 }
 @media only screen and (max-width: 300px) {
+  .userBlock {
+    width: 200px;
+    grid-template-areas:
+      'a i'
+      'a b';
+  }
+  .form {
+    width: 200px;
+  }
 }
