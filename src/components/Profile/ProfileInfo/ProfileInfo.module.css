@@ -30,9 +30,9 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 120px 1fr;
   grid-gap: 10px;
-  margin-left: 30%;
+  margin-left: 35%;
   padding-bottom: 10px;
-  min-width: 600px;
+  width: 600px;
 }
 
 .nameBlock {
@@ -49,7 +49,7 @@
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
   background-color: #e6ebf3;
-  max-width: 340px;
+  width: 340px;
 }
 
 .descriptionBlock {
@@ -58,64 +58,50 @@
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
   background-color: #e6ebf3;
-  max-width: 250px;
+  width: 250px;
 }
 
-@media (max-width: 1280px) {
+@media only screen and (max-width: 1200px) {
   .profileWrapper {
     margin-left: 0%;
-    width: 600px;
   }
 }
 
-@media (max-width: 540px) {
+@media only screen and (max-width: 992px) {
   .profileWrapper {
     grid-template-areas:
       'n'
       'a'
       'd';
   }
-  .nameBlock {
-    max-width: 400px;
-  }
-  .avatarBlock {
-    max-width: 400px;
-  }
-  .mainPhoto {
-    max-width: 350px;
-  }
   .descriptionBlock {
-    min-width: 400px;
+    width: 100%;
   }
 }
 
-@media (max-width: 500px) {
+@media only screen and (max-width: 600px) {
   .nameBlock {
-    max-width: 300px;
+    width: 95%;
   }
   .avatarBlock {
-    max-width: 300px;
-  }
-  .mainPhoto {
-    max-width: 250px;
+    width: 95%;
   }
   .descriptionBlock {
-    min-width: 300px;
+    width: 95%;
+  }
+  .mainPhoto {
+    width: 95%;
   }
 }
 
-@media (max-width: 280px) {
+@media only screen and (max-width: 300px) {
   .nameBlock {
-    max-width: 200px;
+    width: 70%;
   }
   .avatarBlock {
-    max-width: 200px;
-  }
-  .mainPhoto {
-    max-width: 150px;
+    width: 70%;
   }
   .descriptionBlock {
-    max-width: 200px;
-    min-width: 200px;
+    width: 70%;
   }
 }

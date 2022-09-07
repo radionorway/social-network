@@ -12,3 +12,9 @@
   padding-bottom: 5px;
   height: 9vh;
 }
+
+@media only screen and (max-width: 992px) {
+  .header {
+    padding-right: 100px;
+  }
+}

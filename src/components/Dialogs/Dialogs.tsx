@@ -35,7 +35,6 @@ const Dialogs: React.FC<PropsType> = (props) => {
         <Avatar className={s.avatar} size={40}>
           A
         </Avatar>
-
         <div className={s.userName}>
           <Text strong>Andrew Sokolov</Text>
         </div>
@@ -43,9 +42,7 @@ const Dialogs: React.FC<PropsType> = (props) => {
           <Text>online</Text> <MobileOutlined />
         </div>
       </div>
-      <div className={s.dialogs}>
-        <div>{messagesElements}</div>
-      </div>
+      <div className={s.dialog}>{messagesElements}</div>
       <div className={s.form}>
         <AddMessageForm onSubmit={addNewMessage} />
       </div>

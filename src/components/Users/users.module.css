@@ -7,7 +7,7 @@
   border: 1px solid rgb(146, 146, 146);
   padding: 20px;
   background-color: #e6ebf3;
-  width: 1150px;
+  min-width: 80vw;
   margin-bottom: 10px;
 }
 
@@ -44,56 +44,18 @@
   justify-content: space-between;
 }
 
-@media (max-width: 1280px) {
+@media only screen and (max-width: 1400px) {
   .userBlock {
-    width: 1000px;
+    min-width: 75vw;
     grid-gap: 10px;
   }
 }
 
-@media (max-width: 1024px) {
-  .userBlock {
-    width: 700px;
-  }
-}
-@media (max-width: 950px) {
-  .userBlock {
-    width: 800px;
-  }
-}
-
-@media (max-width: 850px) {
-  .userBlock {
-    width: 700px;
-  }
-}
-
-@media (max-width: 767px) {
-  .userBlock {
-    width: 500px;
-  }
-}
-
-@media (max-width: 600px) {
-  .userBlock {
-    width: 450px;
-  }
-}
-
-@media (max-width: 500px) {
-  .userBlock {
-    width: 300px;
-  }
+@media only screen and (max-width: 600px) {
   .form {
     flex-direction: column;
     width: 300px;
   }
 }
-@media (max-width: 281px) {
-  .userBlock {
-    width: 200px;
-    grid-template-areas:
-      'a i'
-      'b b';
-  }
+@media only screen and (max-width: 300px) {
 }

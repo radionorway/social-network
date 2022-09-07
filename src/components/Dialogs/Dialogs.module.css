@@ -1,9 +1,8 @@
-.dialogs {
+.dialog {
   padding: 5px;
   border: 1px solid rgb(146, 146, 146);
   background-color: #e6ebf3;
   width: 700px;
-
   height: 490px;
   overflow-y: scroll;
   padding: 30px;
@@ -50,57 +49,65 @@
 }
 
 .container {
-  margin-left: 30%;
+  margin-left: 35%;
 }
 
-@media (max-width: 1280px) {
+@media only screen and (max-width: 1200px) {
   .name {
     grid-template-columns: 1fr;
   }
-
   .status {
     margin-left: 50px;
   }
-
   .container {
     margin-left: 0%;
   }
 }
-@media (max-width: 767px) {
+
+@media only screen and (max-width: 992px) {
   .form {
-    width: 400px;
+    width: 600px;
   }
   .name {
-    width: 400px;
+    width: 600px;
   }
-  .dialogs {
-    width: 400px;
+  .dialog {
+    width: 600px;
   }
 }
 
-@media (max-width: 500px) {
-  .container {
-    margin-left: 0%;
+@media only screen and (max-width: 768px) {
+  .form {
+    width: 500px;
   }
+  .name {
+    width: 500px;
+  }
+  .dialog {
+    width: 500px;
+  }
+}
+
+@media only screen and (max-width: 600px) {
   .form {
     width: 300px;
   }
   .name {
     width: 300px;
   }
-  .dialogs {
+  .dialog {
     width: 300px;
   }
 }
 
-@media (max-width: 281px) {
+@media only screen and (max-width: 300px) {
   .form {
-    width: 200px;
+    width: 220px;
   }
   .name {
-    width: 200px;
+    width: 220px;
   }
-  .dialogs {
-    width: 200px;
+  .dialog {
+    width: 220px;
   }
 }
