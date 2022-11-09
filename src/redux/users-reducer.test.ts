@@ -1,5 +1,7 @@
-import usersReducer, { actions, InitialState } from './users-reducer';
-let state: InitialState;
+import usersReducer, { actions, InitialState } from './users-reducer'
+
+let state: InitialState
+
 beforeEach(() => {
   //@ts-ignore
   state = {
@@ -38,19 +40,19 @@ beforeEach(() => {
     currentPage: 1,
     isFetching: false,
     followingInProgress: [],
-  };
-});
+  }
+})
 
 test('follow success', () => {
-  const newState = usersReducer(state, actions.followSuccess(1));
+  const newState = usersReducer(state, actions.followSuccess(1))
 
-  expect(newState.users[0].followed).toBeFalsy();
-  expect(newState.users[1].followed).toBeTruthy();
-});
+  expect(newState.users[0].followed).toBeFalsy()
+  expect(newState.users[1].followed).toBeTruthy()
+})
 
 test('unfollow success', () => {
-  const newState = usersReducer(state, actions.unfollowSuccess(3));
+  const newState = usersReducer(state, actions.unfollowSuccess(3))
 
-  expect(newState.users[2].followed).toBeTruthy();
-  expect(newState.users[3].followed).toBeFalsy();
-});
+  expect(newState.users[2].followed).toBeTruthy()
+  expect(newState.users[3].followed).toBeFalsy()
+})

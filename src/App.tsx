@@ -1,19 +1,21 @@
 import React, { Component, Suspense } from 'react'
-import './App.css'
-import 'antd/dist/antd.css'
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom'
 import { connect, Provider } from 'react-redux'
-import { withRouter } from './hoc/withRouter'
 import { compose } from 'redux'
+import { Link } from 'react-router-dom'
+
+import { withRouter } from './hoc/withRouter'
 import { initializeApp } from './redux/app-reducer'
 import store from './redux/redux-store'
 import { AppStateType } from './redux/redux-store'
 import { UsersPage } from './components/Users/Users'
 import { LoginPage } from './components/Login/LoginPage'
+import { Header } from './components/Header/Header'
+
+import './App.css'
+import 'antd/dist/antd.css'
 import { Layout, Menu, Spin } from 'antd'
 import { UserOutlined, LaptopOutlined } from '@ant-design/icons'
-import { Link } from 'react-router-dom'
-import { Header } from './components/Header/Header'
 
 const { Content, Sider } = Layout
 
@@ -22,6 +24,7 @@ const ProfileContainer = React.lazy(() => import('./components/Profile/ProfileCo
 const ChatPage = React.lazy(() => import('./pages/Chat/ChatPage'))
 
 type MapPropsType = ReturnType<typeof mapStateToProps>
+
 type DispatchPropsType = {
   initializeApp: () => void
 }

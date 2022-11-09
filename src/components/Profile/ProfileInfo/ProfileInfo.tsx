@@ -1,9 +1,11 @@
 import React, { ChangeEvent, useState } from 'react'
-import s from './ProfileInfo.module.css'
+
 import ProfileStatusWithHooks from './ProfileStatusWithHooks'
 import userPhoto from '../../../assets/images/user.png'
 import ProfileDataForm from './ProfileDataForm'
 import { ContactsType, ProfileType } from '../../../types/types'
+
+import s from './ProfileInfo.module.css'
 import { Button, Spin, Tabs, Typography } from 'antd'
 import { EditOutlined } from '@ant-design/icons'
 
@@ -24,7 +26,8 @@ const ProfileInfo: React.FC<PropsType> = ({
   savePhoto,
   saveProfile,
 }) => {
-  let [editMode, setEditMode] = useState(false)
+  const [editMode, setEditMode] = useState(false)
+
   const { Title } = Typography
 
   if (!profile) {
@@ -63,7 +66,6 @@ const ProfileInfo: React.FC<PropsType> = ({
           </Button>
         )}
       </div>
-
       <div className={s.descriptionBlock}>
         {editMode ? (
           <ProfileDataForm initialValues={profile} profile={profile} onSubmit={onSubmit} />
@@ -127,10 +129,12 @@ const ProfileData: React.FC<ProfileDataPropsType> = ({ profile, isOwner, goToEdi
     </div>
   )
 }
+
 type ContactsPropsType = {
   contactTitle: string
   contactValue: string
 }
+
 const Contact: React.FC<ContactsPropsType> = ({ contactTitle, contactValue }) => {
   const { Text } = Typography
   return (
@@ -139,4 +143,5 @@ const Contact: React.FC<ContactsPropsType> = ({ contactTitle, contactValue }) =>
     </div>
   )
 }
+
 export default ProfileInfo

@@ -1,10 +1,12 @@
-import { Button, Col, Layout, Row, Typography } from 'antd'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { selectIsAuth } from '../../redux/auth-selectors'
 import { logout } from '../../redux/auth-reducer'
+
 import s from './Header.module.css'
+import { Button, Col, Layout, Row, Typography } from 'antd'
 
 export const Header: React.FC = () => {
   const isAuth = useSelector(selectIsAuth)

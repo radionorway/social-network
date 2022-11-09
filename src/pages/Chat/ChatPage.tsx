@@ -1,6 +1,6 @@
-import { Button, Typography } from 'antd'
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+
 import { ChatMessageAPIType } from '../../api/chat-api'
 import {
   sendMessage,
@@ -8,7 +8,9 @@ import {
   stopMessagesListening,
 } from '../../redux/chat-reducer'
 import { AppStateType } from '../../redux/redux-store'
+
 import s from './ChatPage.module.css'
+import { Button, Typography } from 'antd'
 
 const ChatPage: React.FC = () => {
   return (
@@ -20,6 +22,7 @@ const ChatPage: React.FC = () => {
 
 const Chat: React.FC = () => {
   const dispatch = useDispatch()
+
   const status = useSelector((state: AppStateType) => state.chat.status)
 
   useEffect(() => {
@@ -43,6 +46,7 @@ const Chat: React.FC = () => {
 const Messages: React.FC<{}> = ({}) => {
   const messages = useSelector((state: AppStateType) => state.chat.messages)
   const messagesAnchorRef = useRef<HTMLDivElement>(null)
+
   const [isAutoScroll, setIsAutoScroll] = useState(true)
 
   const scrollHandler = (e: React.UIEvent<HTMLDivElement, UIEvent>) => {
@@ -61,6 +65,7 @@ const Messages: React.FC<{}> = ({}) => {
       }
     }
   }, [messages])
+
   return (
     <div className={s.chat} onScroll={scrollHandler}>
       {messages.map((m, index) => (
@@ -73,6 +78,7 @@ const Messages: React.FC<{}> = ({}) => {
 
 const Message: React.FC<{ message: ChatMessageAPIType }> = React.memo(({ message }) => {
   const { Text } = Typography
+
   return (
     <div className={s.message}>
       <img className={s.avatar} src={message.photo} style={{ width: '30px' }} />
@@ -99,6 +105,7 @@ const AddMessageForm: React.FC<{}> = () => {
     dispatch(sendMessage(message))
     setMessage('')
   }
+
   return (
     <div>
       <div>

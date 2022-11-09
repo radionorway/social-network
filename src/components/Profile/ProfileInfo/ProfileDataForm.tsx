@@ -1,14 +1,16 @@
 import React from 'react'
-import s from './ProfileInfo.module.css'
 import { InjectedFormProps, reduxForm } from 'redux-form'
+
 import {
   createField,
   Input,
   Textarea,
   GetStringKeys,
 } from '../../common/FormsControls/FormsControls'
-import style from '../../common/FormsControls/FormsControls.module.css'
 import { ProfileType } from '../../../types/types'
+
+import s from './ProfileInfo.module.css'
+import style from '../../common/FormsControls/FormsControls.module.css'
 import { Typography } from 'antd'
 
 type PropsType = {
@@ -38,7 +40,6 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & Prop
           type: 'checkbox',
         })}
       </div>
-
       <div>
         <Text strong>My professional skills </Text>:
         {createField<ProfileTypeKeys>(
@@ -48,7 +49,6 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & Prop
           Textarea,
         )}
       </div>
-
       <div>
         <Text strong>About me</Text>:
         {createField<ProfileTypeKeys>('About me', 'aboutMe', [], Textarea)}
@@ -72,4 +72,5 @@ const ProfileDataForm: React.FC<InjectedFormProps<ProfileType, PropsType> & Prop
 const ProfileDataFormReduxFrom = reduxForm<ProfileType, PropsType>({
   form: 'edit-profile',
 })(ProfileDataForm)
+
 export default ProfileDataFormReduxFrom

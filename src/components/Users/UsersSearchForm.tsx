@@ -1,15 +1,18 @@
-import { Button } from 'antd'
-import { Field, Form, Formik } from 'formik'
 import React from 'react'
 import { useSelector } from 'react-redux'
+import { Field, Form, Formik } from 'formik'
+
 import { FilterType } from '../../redux/users-reducer'
 import { getUsersFilter } from '../../redux/users-selectors'
+
 import s from './users.module.css'
+import { Button } from 'antd'
 
 const usersSearchFormValidate = () => {
   const errors = {}
   return errors
 }
+
 type FriendFormType = 'true' | 'false' | 'null'
 
 type FormType = {
@@ -20,8 +23,10 @@ type FormType = {
 type PropsType = {
   onFilterChanged: (filter: FilterType) => void
 }
+
 export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
   const filter = useSelector(getUsersFilter)
+
   const submit = (
     values: FormType,
     { setSubmitting }: { setSubmitting: (isSubmitting: boolean) => void },
@@ -33,6 +38,7 @@ export const UsersSearchForm: React.FC<PropsType> = React.memo((props) => {
     props.onFilterChanged(filter)
     setSubmitting(false)
   }
+
   return (
     <div>
       <Formik

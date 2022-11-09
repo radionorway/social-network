@@ -1,7 +1,7 @@
-import { Spin } from 'antd'
 import React, { FC, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+
 import { FilterType, requestUsers } from '../../redux/users-reducer'
 import {
   getFollowingInProgress,
@@ -13,7 +13,9 @@ import { getCurrentPage, getPageSize, getTotalUsersCount } from '../../redux/use
 import Paginator from '../common/Paginator/Paginator'
 import User from './User'
 import { UsersSearchForm } from './UsersSearchForm'
+
 import s from './users.module.css'
+import { Spin } from 'antd'
 
 export const UsersPage: FC = () => {
   const users = useSelector(getUsers)
@@ -43,12 +45,15 @@ export const UsersPage: FC = () => {
   const onFilterChanged = (filter: FilterType) => {
     dispatch(requestUsers(1, pageSize, filter))
   }
+
   const follow = (userId: number) => {
     dispatch(follow(userId))
   }
+
   const unfollow = (userId: number) => {
     dispatch(unfollow(userId))
   }
+
   return (
     <div>
       <UsersSearchForm onFilterChanged={onFilterChanged} />

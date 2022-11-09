@@ -1,13 +1,15 @@
 import React from 'react'
 import { InjectedFormProps, reduxForm } from 'redux-form'
+import { useDispatch, useSelector } from 'react-redux'
+import { Navigate } from 'react-router-dom'
+
 import { createField, Input } from '../common/FormsControls/FormsControls'
 import { required } from '../../utilities/validators/validators'
-import { useDispatch, useSelector } from 'react-redux'
 import { login } from '../../redux/auth-reducer'
-import { Navigate } from 'react-router-dom'
 import { AppStateType } from '../../redux/redux-store'
 import style from './../common/FormsControls/FormsControls.module.css'
 import { GetStringKeys } from '../common/FormsControls/FormsControls'
+
 import s from './LoginPage.module.css'
 import { Button } from 'antd'
 

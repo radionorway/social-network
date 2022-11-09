@@ -1,4 +1,5 @@
 import { stopSubmit } from 'redux-form'
+
 import { ResultCodeForCaptchaEnum } from '../api/api'
 import { ResultCodesEnum } from '../api/api'
 import { authAPI } from '../api/auth-api'
@@ -88,6 +89,8 @@ export const logout = (): ThunkType => async (dispatch: any) => {
 }
 
 export default authReducer
+
 export type InitialStateType = typeof initialState
+
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType | ReturnType<typeof stopSubmit>>

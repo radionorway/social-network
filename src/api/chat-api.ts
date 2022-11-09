@@ -2,6 +2,7 @@ const subscribers = {
   'messages-received': [] as MessagesReceivedSubscriberType[],
   'status-changed': [] as StatusChangedSubscriberType[],
 }
+
 let ws: WebSocket | null = null
 
 type EventsNamesType = 'messages-received' | 'status-changed'
@@ -19,6 +20,7 @@ const messageHandler = (e: MessageEvent) => {
 const openHandler = () => {
   notifySubscribersAboutStatus('ready')
 }
+
 const errorHandler = () => {
   notifySubscribersAboutStatus('error')
   console.error('REFRESH PAGE')
@@ -56,7 +58,6 @@ export const chatAPI = {
     cleanUp()
     ws?.close()
   },
-
   subscribe(
     eventName: EventsNamesType,
     callback: MessagesReceivedSubscriberType | StatusChangedSubscriberType,
@@ -82,6 +83,7 @@ export const chatAPI = {
 
 type MessagesReceivedSubscriberType = (messages: ChatMessageAPIType[]) => void
 type StatusChangedSubscriberType = (status: StatusType) => void
+
 export type ChatMessageAPIType = {
   message: string
   photo: string

@@ -1,10 +1,12 @@
-import { MobileOutlined } from '@ant-design/icons'
-import { Avatar, Typography } from 'antd'
 import React from 'react'
 import { InitialStateType } from '../../redux/dialogs-reducer'
+
 import AddMessageForm from './AddMessageForm/AddMessageForm'
-import s from './Dialogs.module.css'
 import Message from './Message/Message'
+
+import s from './Dialogs.module.css'
+import { MobileOutlined } from '@ant-design/icons'
+import { Avatar, Typography } from 'antd'
 
 type PropsType = {
   dialogsPage: InitialStateType

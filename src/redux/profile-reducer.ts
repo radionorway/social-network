@@ -1,4 +1,5 @@
 import { FormAction, stopSubmit } from 'redux-form'
+
 import { profileAPI } from '../api/profile-api'
 import { PhotosType, PostType, ProfileType } from '../types/types'
 import { BaseThunkType, InferActionsTypes } from './redux-store'
@@ -21,7 +22,6 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
         posts: [...state.posts, newPost],
       }
     }
-
     case 'SN/PROFILE/SET_STATUS': {
       return {
         ...state,
@@ -37,13 +37,11 @@ const profileReducer = (state = initialState, action: ActionsType): InitialState
         posts: state.posts.filter((p) => p.id != action.postId),
       }
     }
-
     case 'SN/PROFILE/SAVE_PHOTO_SUCCESS':
       return {
         ...state,
         profile: { ...state.profile, photos: action.photos } as ProfileType,
       }
-
     default:
       return state
   }
@@ -90,6 +88,7 @@ export const getStatus =
     const data = await profileAPI.getStatus(userId)
     dispatch(actions.setStatus(data))
   }
+
 export const updateStatus =
   (status: string): ThunkType =>
   async (dispatch) => {
@@ -130,8 +129,10 @@ export const saveProfile =
       return Promise.reject(data.messages[0])
     }
   }
+
 export default profileReducer
 
 export type InitialStateType = typeof initialState
+
 type ActionsType = InferActionsTypes<typeof actions>
 type ThunkType = BaseThunkType<ActionsType | FormAction>

@@ -1,7 +1,9 @@
 import React from 'react'
-import s from './users.module.css'
 import { NavLink } from 'react-router-dom'
+
 import { UserType } from '../../types/types'
+
+import s from './users.module.css'
 import { Avatar, Button, Typography } from 'antd'
 
 type PropsType = {
@@ -13,6 +15,7 @@ type PropsType = {
 
 const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow }) => {
   const { Text } = Typography
+
   return (
     <div className={s.userBlock}>
       <div className={s.avatar}>
@@ -32,7 +35,6 @@ const User: React.FC<PropsType> = ({ user, followingInProgress, unfollow, follow
           )}
         </NavLink>
       </div>
-
       <span>
         <span className={s.information}>
           <Text strong>{user.name}</Text>

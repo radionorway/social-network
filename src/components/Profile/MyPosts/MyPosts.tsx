@@ -1,14 +1,17 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
+
 import { getProfile } from '../../../redux/auth-selectors'
 import { PostType } from '../../../types/types'
 import AddPostForm, { AddPostFormValuesType } from './AddPostForm/AddPostForm'
-import s from './MyPosts.module.css'
 import Post from './Post/Post'
+
+import s from './MyPosts.module.css'
 
 export type MapPropsType = {
   posts: Array<PostType>
 }
+
 export type DispatchPropsType = {
   addPost: (newPostText: string) => void
 }
@@ -36,6 +39,7 @@ const MyPosts: React.FC<MapPropsType & DispatchPropsType> = (props) => {
     </div>
   )
 }
+
 const MyPostsMemorized = React.memo(MyPosts)
 
 export default MyPostsMemorized
